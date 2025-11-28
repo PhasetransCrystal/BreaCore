@@ -1,4 +1,4 @@
-package com.phasetranscrystal.breacore.api.item;
+package com.phasetranscrystal.breacore.api.item.debug;
 
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;

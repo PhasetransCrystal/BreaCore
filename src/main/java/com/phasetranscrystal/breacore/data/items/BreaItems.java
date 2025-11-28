@@ -1,6 +1,6 @@
 package com.phasetranscrystal.breacore.data.items;
 
-import com.phasetranscrystal.breacore.api.item.MuiItem;
+import com.phasetranscrystal.breacore.api.item.debug.MuiItem;
 import com.tterrag.registrate.util.entry.ItemEntry;
 
 public class BreaItems {
