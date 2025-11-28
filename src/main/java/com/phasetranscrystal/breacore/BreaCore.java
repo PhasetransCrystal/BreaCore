@@ -6,6 +6,7 @@ import net.neoforged.fml.common.Mod;
 
 import com.phasetranscrystal.breacore.client.ClientProxy;
 import com.phasetranscrystal.breacore.common.CommonProxy;
+import com.phasetranscrystal.brealib.BreaLib;
 import com.tterrag.registrate.util.RegistrateDistExecutor;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
@@ -16,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 public class BreaCore {
 
     public static final Logger LOGGER = LogManager.getLogger(BreaCore.MOD_ID);
-    public static final String MOD_ID = "breacore";
+    public static final String MOD_ID = BreaLib.Core_ID;
     public static final String NAME = "舟尘";
     @Getter
     private static ModContainer modContainer;

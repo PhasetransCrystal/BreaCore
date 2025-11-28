@@ -1,6 +1,8 @@
 repositories {
     mavenLocal()
-
+    flatDir {
+        dir "libs"
+    }
     mavenCentral()
 
     exclusiveContent { // Curseforge Maven
@@ -13,5 +15,15 @@ repositories {
     maven {
         name = 'Kotlin for Forge'
         url = 'https://thedarkcolour.github.io/KotlinForForge/'
+    }
+    // MUI
+    maven {
+        name = 'IzzelAliz Maven'
+        url = 'https://maven.izzel.io/releases/'
+    }
+    // Configuration
+    maven {
+        name 'Configuration'
+        url 'https://repo.repsy.io/mvn/toma/public/'
     }
 }
