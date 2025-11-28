@@ -1,6 +1,8 @@
 repositories {
     mavenLocal()
-
+    flatDir {
+        dir "libs"
+    }
     mavenCentral()
 
     exclusiveContent { // Curseforge Maven
@@ -18,5 +20,10 @@ repositories {
     maven {
         name = 'IzzelAliz Maven'
         url = 'https://maven.izzel.io/releases/'
+    }
+    // Configuration
+    maven {
+        name 'Configuration'
+        url 'https://repo.repsy.io/mvn/toma/public/'
     }
 }

@@ -7,7 +7,8 @@ dependencies {
     implementation 'org.spongepowered:mixin:0.8.5'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-    jarJar(api("com.tterrag.registrate:Registrate:1.4.0"))
+    //jarJar(api("com.tterrag.registrate:Registrate:1.4.0"))
+    jarJar(api("dev:Registrate:1.4.0"))
     jarJar(api("com.phasetranscrystal:BreaLib:1.0.0"))
 
     // Modern UI
@@ -32,4 +33,7 @@ dependencies {
         exclude group: "com.ibm.icu", module: "icu4j"
         exclude group: "it.unimi.dsi", module: "fastutil"
     }
+
+    // Configuration library
+    implementation "dev.toma.configuration:configuration-${project.minecraft_version}:${project.configuration_version}-neoforge"
 }
