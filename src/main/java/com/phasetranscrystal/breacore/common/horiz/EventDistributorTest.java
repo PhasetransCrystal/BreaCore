@@ -12,11 +12,12 @@ import com.phasetranscrystal.breacore.BreaCore;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
 import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 
 @EventBusSubscriber(modid = BreaCore.MOD_ID)
 public class EventDistributorTest {
 
-    public static void bootstrapConsumer(IEventBus bus) {
+    public static void bootstrapConsumer(@NotNull IEventBus bus) {
         bus.addListener(EventDistributorTest::bingingToPlayer);
     }
 
@@ -36,7 +37,7 @@ public class EventDistributorTest {
         }
 
         @Override
-        protected void consumeEvent(PlayerEvent.PlayerLoggedInEvent event) {
+        protected void consumeEvent(PlayerEvent.@NotNull PlayerLoggedInEvent event) {
             // 处理玩家登录事件
             event.getEntity().displayClientMessage(Component.literal(content), false);
         }
@@ -55,7 +56,7 @@ public class EventDistributorTest {
 
     public static final MapCodec<LoginListener> LOGIN_SHOW_TEXT;
 
-    private static void bingingToPlayer(EntityDistributorInit.GatherEntityDistributeEvent event) {
+    private static void bingingToPlayer(EntityDistributorInit.@NotNull GatherEntityDistributeEvent event) {
         if (event.getEntity() instanceof Player) {
             event.getEntity().getData(BreaHoriz.EVENT_DISTRIBUTOR).add(new LoginListener("HELLO PLAYER!"), BreaUtil.byPath("testing"));
         }

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(ResourceKey.class)
 public interface ResourceKeyAccessor {
 
-    @Invoker
+    @Invoker("<init>")
     static <T> ResourceKey<T> callCreate(ResourceLocation registryName, ResourceLocation location) {
         throw new AssertionError();
     }

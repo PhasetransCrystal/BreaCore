@@ -1,6 +1,6 @@
 package com.phasetranscrystal.breacore.api.misc
 
-import com.phasetranscrystal.breacore.common.data.translation.ComponentSlang
+import com.phasetranscrystal.breacore.data.translation.ComponentSlang
 
 import kotlin.reflect.KProperty1
 

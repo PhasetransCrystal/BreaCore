@@ -1,6 +1,6 @@
 package com.phasetranscrystal.breacore.data.items;
 
-import com.phasetranscrystal.breacore.api.item.MuiItem;
+import com.phasetranscrystal.breacore.api.item.debug.MuiItem;
 import com.phasetranscrystal.breacore.data.misc.BreaCreativeModeTabs;
 
 import static com.phasetranscrystal.breacore.api.registry.registry.BreaRegistrate.Brea;
