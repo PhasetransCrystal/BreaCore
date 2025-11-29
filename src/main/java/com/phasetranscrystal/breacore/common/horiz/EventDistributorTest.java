@@ -2,7 +2,7 @@ package com.phasetranscrystal.breacore.common.horiz;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
@@ -17,9 +17,7 @@ import org.jetbrains.annotations.NotNull;
 @EventBusSubscriber(modid = BreaCore.MOD_ID)
 public class EventDistributorTest {
 
-    public static void bootstrapConsumer(@NotNull IEventBus bus) {
-        bus.addListener(EventDistributorTest::bingingToPlayer);
-    }
+    public static void bootstrapConsumer() {}
 
     public static class LoginListener extends SavableEventConsumerData<PlayerEvent.PlayerLoggedInEvent> {
 
@@ -56,7 +54,8 @@ public class EventDistributorTest {
 
     public static final MapCodec<LoginListener> LOGIN_SHOW_TEXT;
 
-    private static void bingingToPlayer(EntityDistributorInit.@NotNull GatherEntityDistributeEvent event) {
+    @SubscribeEvent
+    public static void bingingToPlayer(EntityDistributorInit.@NotNull GatherEntityDistributeEvent event) {
         if (event.getEntity() instanceof Player) {
             event.getEntity().getData(BreaHoriz.EVENT_DISTRIBUTOR).add(new LoginListener("HELLO PLAYER!"), BreaUtil.byPath("testing"));
         }

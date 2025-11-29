@@ -8,7 +8,7 @@ import dev.toma.configuration.config.Configurable.UpdateRestriction;
 import dev.toma.configuration.config.UpdateRestrictions;
 import dev.toma.configuration.config.format.ConfigFormats;
 
-@Config(id = BreaCore.MOD_ID + "-common", group = "phasetranscrystal")
+@Config(id = BreaCore.MOD_ID + "-common", group = "common")
 public class ConfigHolder {
 
     public static ConfigHolder INSTANCE;

@@ -26,7 +26,7 @@ public class CommonProxy {
         BreaRegistries.init(eventBus);
         eventBus.addListener(CommonProxy::onCommonSetup);
         registry();
-        BreaHoriz.bootstrap(eventBus);
+        BreaHoriz.bootstrap();
     }
 
     public static void init() {}

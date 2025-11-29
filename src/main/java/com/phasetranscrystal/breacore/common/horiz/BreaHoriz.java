@@ -1,6 +1,5 @@
 package com.phasetranscrystal.breacore.common.horiz;
 
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.*;
 
@@ -11,10 +10,10 @@ import static com.phasetranscrystal.breacore.api.registry.registry.BreaRegistrat
 
 public class BreaHoriz {
 
-    public static void bootstrap(IEventBus bus) {
+    public static void bootstrap() {
         EntityDistributorInit.bootstrapConsumer();
-        if (BreaUtil.isProd()) {
-            EventDistributorTest.bootstrapConsumer(bus);
+        if (BreaUtil.isDev()) {
+            EventDistributorTest.bootstrapConsumer();
         }
     }
 
