@@ -2,22 +2,21 @@ package com.phasetranscrystal.breacore.common.horiz;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.phasetranscrystal.breacore.BreaCore;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
-@EventBusSubscriber(modid = BreaCore.MOD_ID)
 public class EventDistributorTest {
 
-    public static void bootstrapConsumer() {}
+    public static void bootstrapConsumer() {
+        NeoForge.EVENT_BUS.addListener(EventDistributorTest::bingingToPlayer);
+    }
 
     public static class LoginListener extends SavableEventConsumerData<PlayerEvent.PlayerLoggedInEvent> {
 
@@ -38,6 +37,7 @@ public class EventDistributorTest {
         protected void consumeEvent(PlayerEvent.@NotNull PlayerLoggedInEvent event) {
             // 处理玩家登录事件
             event.getEntity().displayClientMessage(Component.literal(content), false);
+            event.getEntity().getData(BreaHoriz.EVENT_DISTRIBUTOR).removeAtPath(BreaUtil.byPath("testing"));
         }
 
         // 配置是否允许处理取消的事件
@@ -54,8 +54,7 @@ public class EventDistributorTest {
 
     public static final MapCodec<LoginListener> LOGIN_SHOW_TEXT;
 
-    @SubscribeEvent
-    public static void bingingToPlayer(EntityDistributorInit.@NotNull GatherEntityDistributeEvent event) {
+    private static void bingingToPlayer(EntityDistributorInit.@NotNull GatherEntityDistributeEvent event) {
         if (event.getEntity() instanceof Player) {
             event.getEntity().getData(BreaHoriz.EVENT_DISTRIBUTOR).add(new LoginListener("HELLO PLAYER!"), BreaUtil.byPath("testing"));
         }
