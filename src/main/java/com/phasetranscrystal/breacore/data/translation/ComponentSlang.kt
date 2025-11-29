@@ -1,4 +1,4 @@
-package com.phasetranscrystal.breacore.common.data.translation
+package com.phasetranscrystal.breacore.data.translation
 
 import com.phasetranscrystal.breacore.api.lang.initialize
 import com.phasetranscrystal.breacore.api.lang.toLiteralSupplier

@@ -14,13 +14,10 @@ import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 import com.phasetranscrystal.breacore.BreaCore;
-
-import java.util.function.Consumer;
+import org.jetbrains.annotations.NotNull;
 
 @EventBusSubscriber(modid = BreaCore.MOD_ID)
 public class EntityDistributorInit {
-
-    public static final Consumer<EntityEvent> consumer = event -> event.getEntity().getExistingData(BreaHoriz.EVENT_DISTRIBUTOR).ifPresent(d -> d.post(event));
 
     public static void bootstrapConsumer() {
         // addListener(EntityJoinLevelEvent.class); 信息在该事件低优先级被收集，该事件不会被触发。
@@ -84,20 +81,21 @@ public class EntityDistributorInit {
         addListener(ProjectileImpactEvent.class);
     }
 
-    @SuppressWarnings("unchecked")
     public static <T extends EntityEvent> void addListener(Class<T> eventType) {
-        NeoForge.EVENT_BUS.addListener(eventType, (Consumer<T>) consumer);
+        NeoForge.EVENT_BUS.addListener(eventType, event -> event.getEntity()
+                .getExistingData(BreaHoriz.EVENT_DISTRIBUTOR)
+                .ifPresent(d -> d.post(event)));
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void init(EntityJoinLevelEvent event) {
+    public static void init(@NotNull EntityJoinLevelEvent event) {
         if (!event.getLevel().isClientSide()) {
             NeoForge.EVENT_BUS.post(new GatherEntityDistributeEvent(event.getEntity()));
         }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void postAttackIncome(LivingIncomingDamageEvent event) {
+    public static void postAttackIncome(@NotNull LivingIncomingDamageEvent event) {
         boolean cancelFlag = false;
         if (event.getSource().getEntity() != null)
             cancelFlag = NeoForge.EVENT_BUS.post(new EntityAttackEvent.Income(event.getSource().getEntity(), event, false)).isCanceled();
@@ -108,7 +106,7 @@ public class EntityDistributorInit {
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void postAttackPre(LivingDamageEvent.Pre event) {
+    public static void postAttackPre(LivingDamageEvent.@NotNull Pre event) {
         if (event.getSource().getEntity() != null) {
             NeoForge.EVENT_BUS.post(new EntityAttackEvent.Pre(event.getSource().getEntity(), event, false));
         }
@@ -118,7 +116,7 @@ public class EntityDistributorInit {
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void postAttackPost(LivingDamageEvent.Post event) {
+    public static void postAttackPost(LivingDamageEvent.@NotNull Post event) {
         if (event.getSource().getEntity() != null) {
             NeoForge.EVENT_BUS.post(new EntityAttackEvent.Post(event.getSource().getEntity(), event, false));
         }
@@ -128,7 +126,7 @@ public class EntityDistributorInit {
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void preKill(LivingDeathEvent event) {
+    public static void preKill(@NotNull LivingDeathEvent event) {
         if (event.getSource().getEntity() != null) {
             NeoForge.EVENT_BUS.post(new EntityKillEvent.Pre(event.getSource().getEntity(), event, false));
         }
@@ -138,7 +136,7 @@ public class EntityDistributorInit {
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void postKill(LivingDeathEvent event) {
+    public static void postKill(@NotNull LivingDeathEvent event) {
         if (event.getSource().getEntity() != null) {
             NeoForge.EVENT_BUS.post(new EntityKillEvent.Post(event.getSource().getEntity(), event, false));
         }

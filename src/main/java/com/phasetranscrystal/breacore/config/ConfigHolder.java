@@ -17,7 +17,7 @@ public class ConfigHolder {
     public static void init() {
         synchronized (Lock) {
             if (INSTANCE == null)
-                Configuration.registerConfig(ConfigHolder.class, ConfigFormats.YAML).getConfigInstance();
+                INSTANCE = Configuration.registerConfig(ConfigHolder.class, ConfigFormats.YAML).getConfigInstance();
         }
     }
 

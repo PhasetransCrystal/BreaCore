@@ -7,8 +7,8 @@ import net.neoforged.bus.api.ICancellableEvent;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.mojang.serialization.MapCodec;
-import com.phasetranscrystal.brealib.horiz.IdentEvent;
-import com.phasetranscrystal.brealib.horiz.Tree;
+import com.phasetranscrystal.brealib.utils.Tree;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -45,7 +45,7 @@ public class EventDistributor {
     /**
      * 带标记的事件监听器树，用于按路径组织和管理监听器。
      */
-    public final Tree<ResourceLocation, IdentEvent<?>> markedListeners = new Tree<>();
+    public final Tree<ResourceLocation, EventIdent<?>> markedListeners = Tree.create();
 
     /**
      * 可保存的事件消费者数据树，支持序列化和持久化。
@@ -67,7 +67,7 @@ public class EventDistributor {
      * 构造一个空的事件分发器实例。
      */
     public EventDistributor() {
-        this.savableListeners = new Tree<>();
+        this.savableListeners = Tree.create();
     }
 
     /**
@@ -103,7 +103,7 @@ public class EventDistributor {
     public <T extends Event> boolean add(Class<T> event, Consumer<T> listener, boolean handleCancelled, ResourceLocation... path) {
         boolean result = listeners.put(event, listener);
         if (result) {
-            markedListeners.add(new IdentEvent<>(event, listener, handleCancelled), path);
+            markedListeners.add(new EventIdent<>(event, listener, handleCancelled), path);
             if (handleCancelled) {
                 handleCancelledEvent.add(listener);
             }
@@ -111,12 +111,12 @@ public class EventDistributor {
         return result;
     }
 
-    public <T extends Event> boolean add(IdentEvent<?> identEvent, ResourceLocation... path) {
-        boolean result = listeners.put(identEvent.event(), identEvent.listener());
+    public <T extends Event> boolean add(@NotNull EventIdent<T> eventIdent, ResourceLocation... path) {
+        boolean result = listeners.put(eventIdent.event(), eventIdent.listener());
         if (result) {
-            markedListeners.add(identEvent, path);
-            if (identEvent.handleCancelled()) {
-                handleCancelledEvent.add(identEvent.listener());
+            markedListeners.add(eventIdent, path);
+            if (eventIdent.handleCancelled()) {
+                handleCancelledEvent.add(eventIdent.listener());
             }
         }
         return result;
@@ -131,7 +131,7 @@ public class EventDistributor {
      * @return 如果数据成功添加返回true
      * @throws IllegalArgumentException 如果SavableEventConsumerData的路径已存在，即已被注册。
      */
-    public <T extends Event> boolean add(SavableEventConsumerData<T> data, ResourceLocation... path) {
+    public <T extends Event> boolean add(@NotNull SavableEventConsumerData<T> data, ResourceLocation... path) {
         if (data.getPath() != null)
             throw new IllegalArgumentException("Savable event consumer's path is exist. Don't registry one instance multi.");
         boolean result = listeners.put(data.getEventClass(), data.getConsumer());
@@ -157,7 +157,7 @@ public class EventDistributor {
      */
     public <T extends Event> boolean remove(Class<T> event, Consumer<T> listener) {
         boolean removedFromListeners = listeners.remove(event, listener);
-        boolean removedFromMarked = markedListeners.removeAny(new IdentEvent<>(event, listener));
+        boolean removedFromMarked = markedListeners.removeAny(new EventIdent<>(event, listener));
         handleCancelledEvent.remove(listener);
         return removedFromListeners || removedFromMarked;
     }
@@ -169,7 +169,7 @@ public class EventDistributor {
      * @param ident 标识事件对象，包含事件类和监听器
      * @return 如果监听器被成功移除返回true
      */
-    public <T extends Event> boolean remove(IdentEvent<T> ident) {
+    public <T extends Event> boolean remove(@NotNull EventIdent<T> ident) {
         boolean removedFromListeners = listeners.remove(ident.event(), ident.listener());
         boolean removedFromMarked = markedListeners.removeAny(ident);
         handleCancelledEvent.remove(ident.listener());
@@ -184,7 +184,7 @@ public class EventDistributor {
      * @param data  可保存的事件消费者数据
      * @return 如果数据被成功移除返回true
      */
-    public <T extends Event> boolean removeSavable(Class<T> event, SavableEventConsumerData<T> data) {
+    public <T extends Event> boolean removeSavable(Class<T> event, @NotNull SavableEventConsumerData<T> data) {
         if (data.getPath() == null || data.getConsumerCache() == null) return false;
         boolean removedFromListeners = listeners.remove(event, data.getConsumer());
         boolean removedFromMarked = savableListeners.removeAny(data);
@@ -229,7 +229,7 @@ public class EventDistributor {
     public boolean removeInPath(ResourceLocation... path) {
         boolean flag = false;
 
-        Collection<IdentEvent<?>> co = markedListeners.removeInPath(path);
+        Collection<EventIdent<?>> co = markedListeners.removeInPath(path);
         if (!co.isEmpty()) {
             co.forEach((ident) -> {
                 listeners.remove(ident.event(), ident.listener());
@@ -259,7 +259,7 @@ public class EventDistributor {
     public boolean removeAtPath(ResourceLocation... path) {
         boolean flag = false;
 
-        Collection<IdentEvent<?>> co = markedListeners.removeAtPath(path);
+        Collection<EventIdent<?>> co = markedListeners.removeAtPath(path);
         if (!co.isEmpty()) {
             co.forEach((ident) -> {
                 listeners.remove(ident.event(), ident.listener());
@@ -288,7 +288,7 @@ public class EventDistributor {
      * @param <T>   事件类型
      * @param event 要处理的事件对象
      */
-    public <T extends Event> void post(T event) {
+    public <T extends Event> void post(@NotNull T event) {
         if (!listeners.containsKey(event.getClass()) ||
                 (eventHashCache.containsKey(event.getClass()) && eventHashCache.get(event.getClass()).equals(event.hashCode())))
             return;
