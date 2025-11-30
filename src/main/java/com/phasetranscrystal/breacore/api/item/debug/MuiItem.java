@@ -17,6 +17,5 @@ public class MuiItem extends Item {
     @Override
     public @NotNull InteractionResult use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
         return InteractionResult.SUCCESS;
-        // return super.use(level, player, hand);
     }
 }
