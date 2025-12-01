@@ -9,6 +9,10 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * 材料标志
+ * 用于批量生成数数据包内容
+ */
 public class MaterialFlags {
 
     private final Set<MaterialFlag> flags = new HashSet<>();
@@ -41,57 +45,57 @@ public class MaterialFlags {
     /////////////////
 
     /**
-     * Add to material to disable its unification fully
+     * 添加到材料以完全禁用其统一化处理
      */
     public static final MaterialFlag DISABLE_MATERIAL_RECIPES = new MaterialFlag.Builder("disable_material_recipes")
             .build();
 
     /**
-     * Enables electrolyzer decomposition recipe generation
+     * 启用电解机分解配方生成
      */
     public static final MaterialFlag DECOMPOSITION_BY_ELECTROLYZING = new MaterialFlag.Builder(
             "decomposition_by_electrolyzing").build();
 
     /**
-     * Enables centrifuge decomposition recipe generation
+     * 启用离心机分解配方生成
      */
     public static final MaterialFlag DECOMPOSITION_BY_CENTRIFUGING = new MaterialFlag.Builder(
             "decomposition_by_centrifuging").build();
 
     /**
-     * Disables decomposition recipe generation for this material
+     * 禁用此材料的分解配方生成
      */
     public static final MaterialFlag DISABLE_DECOMPOSITION = new MaterialFlag.Builder("disable_decomposition").build();
 
     /**
-     * Add to material if it is some kind of explosive
+     * 添加到材料，表示其为某种爆炸物
      */
     public static final MaterialFlag EXPLOSIVE = new MaterialFlag.Builder("explosive").build();
 
     /**
-     * Add to material if it is some kind of flammable
+     * 添加到材料，表示其为某种易燃物
      */
     public static final MaterialFlag FLAMMABLE = new MaterialFlag.Builder("flammable").build();
 
     /**
-     * Add to material if it is some kind of sticky
+     * 添加到材料，表示其为某种粘性物
      */
     public static final MaterialFlag STICKY = new MaterialFlag.Builder("sticky").build();
 
     /**
-     * Add to material if it is some kind of phosphorescent
+     * 添加到材料，表示其为某种磷光物
      */
     public static final MaterialFlag PHOSPHORESCENT = new MaterialFlag.Builder("phosphorescent").build();
 
     //////////////////
-    // DUST //
+    // 粉尘 //
     //////////////////
 
     /**
-     * Generate a plate for this material
-     * If it's dust material, dust compressor recipe into plate will be generated
-     * If it's metal material, bending machine recipes will be generated
-     * If block is found, cutting machine recipe will be also generated
+     * 为此材料生成板
+     * 如果是粉尘材料，将生成粉尘压缩机配方制作板
+     * 如果是金属材料，将生成弯曲机配方
+     * 如果找到方块，还会生成切割机配方
      */
     public static final MaterialFlag GENERATE_PLATE = new MaterialFlag.Builder("generate_plate")
             .requireProps(PropertyKey.DUST)
@@ -129,16 +133,18 @@ public class MaterialFlags {
     public static final MaterialFlag FORCE_GENERATE_BLOCK = new MaterialFlag.Builder("force_generate_block")
             .requireProps(PropertyKey.DUST)
             .build();
-
     /**
-     * This will prevent material from creating Shapeless recipes for dust to block and vice versa
-     * Also preventing extruding and alloy smelting recipes via SHAPE_EXTRUDING/MOLD_BLOCK
+     * 这将阻止材料创建粉尘与方块之间的无序合成配方，
+     * 同时阻止通过SHAPE_EXTRUDING/MOLD_BLOCK的挤出和合金冶炼配方。
      */
     public static final MaterialFlag EXCLUDE_BLOCK_CRAFTING_RECIPES = new MaterialFlag.Builder(
             "exclude_block_crafting_recipes")
             .requireProps(PropertyKey.DUST)
             .build();
 
+    /**
+     * 排除板材压缩机配方
+     */
     public static final MaterialFlag EXCLUDE_PLATE_COMPRESSOR_RECIPE = new MaterialFlag.Builder(
             "exclude_plate_compressor_recipe")
             .requireFlags(GENERATE_PLATE)
@@ -146,78 +152,81 @@ public class MaterialFlags {
             .build();
 
     /**
-     * This will prevent material from creating Shapeless recipes for dust to block and vice versa
+     * 这将阻止材料创建粉尘与方块之间的无序合成配方。
      */
     public static final MaterialFlag EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES = new MaterialFlag.Builder(
             "exclude_block_crafting_by_hand_recipes")
             .requireProps(PropertyKey.DUST)
             .build();
 
+    /**
+     * 添加到材料表示可用研钵研磨
+     */
     public static final MaterialFlag MORTAR_GRINDABLE = new MaterialFlag.Builder("mortar_grindable")
             .requireProps(PropertyKey.DUST)
             .build();
 
     /**
-     * Add to material if it cannot be worked by any other means, than smashing or smelting. This is used for coated
-     * Materials.
+     * 添加到材料表示除粉碎或熔炼外无法通过其他方式加工。用于涂层材料。
      */
     public static final MaterialFlag NO_WORKING = new MaterialFlag.Builder("no_working")
             .requireProps(PropertyKey.DUST)
             .build();
 
     /**
-     * Add to material if it cannot be used for regular Metal working techniques since it is not possible to bend it.
+     * 添加到材料表示无法进行常规金属加工，因为无法弯曲。
      */
     public static final MaterialFlag NO_SMASHING = new MaterialFlag.Builder("no_smashing")
             .requireProps(PropertyKey.DUST)
             .build();
 
     /**
-     * Add to material if it's impossible to smelt it
+     * 添加到材料表示无法熔炼
      */
     public static final MaterialFlag NO_SMELTING = new MaterialFlag.Builder("no_smelting")
             .requireProps(PropertyKey.DUST)
             .build();
 
     /**
-     * Add to material if it's impossible to smelt it from an ore.
+     * 添加到材料表示无法从矿石中熔炼
      */
     public static final MaterialFlag NO_ORE_SMELTING = new MaterialFlag.Builder("no_ore_smelting")
             .requireProps(PropertyKey.DUST)
             .build();
 
     /**
-     * Add to a material to disable creating an ore processing tab.
+     * 添加到材料以禁用创建矿石处理标签页
      */
     public static final MaterialFlag NO_ORE_PROCESSING_TAB = new MaterialFlag.Builder("no_ore_processing_tab")
             .requireProps(PropertyKey.ORE)
             .build();
 
     /**
-     * Add this to your Material if you want to have its Ore Calcite heated in a Blast Furnace for more output. Already
-     * listed are:
-     * Iron, Pyrite, PigIron, WroughtIron.
+     * 将此添加到您的材料中，如果您希望其矿石方解石在高炉中加热以获得更多产出。
+     * 已经列出的材料有：铁、黄铁矿、生铁、熟铁。
      */
     public static final MaterialFlag BLAST_FURNACE_CALCITE_DOUBLE = new MaterialFlag.Builder(
             "blast_furnace_calcite_double")
             .requireProps(PropertyKey.DUST)
             .build();
 
+    /**
+     * 高炉方解石三重产量
+     */
     public static final MaterialFlag BLAST_FURNACE_CALCITE_TRIPLE = new MaterialFlag.Builder(
             "blast_furnace_calcite_triple")
             .requireProps(PropertyKey.DUST)
             .build();
-
     // GCYM
     /**
-     * Use to disable alloy blast recipes from generating
+     * 用于禁用合金高炉配方的生成
      */
     public static final MaterialFlag DISABLE_ALLOY_BLAST = new MaterialFlag.Builder("disable_alloy_blast")
             .requireProps(PropertyKey.BLAST, PropertyKey.FLUID)
             .build();
 
     /**
-     * Use to disable everything related to alloy blasting
+     * 用于禁用与合金高炉相关的所有内容
      */
     public static final MaterialFlag DISABLE_ALLOY_PROPERTY = new MaterialFlag.Builder("disable_alloy_property")
             .requireProps(PropertyKey.BLAST, PropertyKey.FLUID)
@@ -284,23 +293,22 @@ public class MaterialFlags {
             .build();
 
     /**
-     * Add this to your Material if it is a magnetized form of another Material.
+     * 将此添加到您的材料中，如果它是另一种材料的磁化形式。
      */
     public static final MaterialFlag IS_MAGNETIC = new MaterialFlag.Builder("is_magnetic")
             .requireProps(PropertyKey.INGOT)
             .build();
 
     /////////////////
-    // GEM //
+    // 宝石 //
     /////////////////
 
     /**
-     * If this material can be crystallized.
+     * 表示此材料可以结晶。
      */
     public static final MaterialFlag CRYSTALLIZABLE = new MaterialFlag.Builder("crystallizable")
             .requireProps(PropertyKey.GEM)
             .build();
-
     public static final MaterialFlag GENERATE_LENS = new MaterialFlag.Builder("generate_lens")
             .requireFlags(GENERATE_PLATE)
             .requireProps(PropertyKey.GEM)

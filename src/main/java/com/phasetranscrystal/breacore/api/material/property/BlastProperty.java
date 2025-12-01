@@ -3,6 +3,10 @@ package com.phasetranscrystal.breacore.api.material.property;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * 材料物理性质,熔炼信息
+ * 待重新设定
+ */
 public class BlastProperty implements IMaterialProperty {
 
     /**

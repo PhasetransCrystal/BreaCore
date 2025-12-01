@@ -14,6 +14,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * 矿处属性
+ */
 public class OreProperty implements IMaterialProperty {
 
     /**

@@ -25,6 +25,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 import java.util.function.UnaryOperator;
 
+/**
+ * Material构建器,应从Registrate中创建
+ */
 public class MaterialBuilder<T extends Material, P> extends AbstractBuilder<Material, T, P, MaterialBuilder<T, P>> {
 
     @FunctionalInterface
