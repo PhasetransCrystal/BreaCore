@@ -14,6 +14,8 @@ import com.google.common.collect.Table;
 import com.mojang.serialization.MapCodec;
 import com.phasetranscrystal.breacore.api.material.Element;
 import com.phasetranscrystal.breacore.api.material.Material;
+import com.phasetranscrystal.breacore.api.material.registry.MaterialRegistry;
+import com.phasetranscrystal.breacore.api.sound.SoundEntry;
 import com.phasetranscrystal.breacore.common.horiz.SavableEventConsumerData;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
 import org.jetbrains.annotations.ApiStatus;
@@ -58,7 +60,7 @@ public class BreaRegistries {
     /**
      * You shouldn't call it, you should probably not even look at it just to be extra safe
      *
-     * @param registryAccess the new value to set to the frozen registry access
+     * @param registryAccess the new value to set to the frozen registrate access
      */
     @ApiStatus.Internal
     public static void updateFrozenRegistry(RegistryAccess registryAccess) {
@@ -80,4 +82,8 @@ public class BreaRegistries {
     public static final ResourceKey<Registry<Material>> MATERIAL_KEY = makeRegistryKey(BreaUtil.byPath("material"));
     public static final ResourceKey<Registry<Element>> ELEMENT_KEY = makeRegistryKey(BreaUtil.byPath("element"));
     public static final BreaRegistry<Element> ELEMENTS = new BreaRegistry<>(ELEMENT_KEY);
+    public static final MaterialRegistry MATERIALS = new MaterialRegistry(MATERIAL_KEY);
+
+    public static final ResourceKey<Registry<SoundEntry>> SOUND_KEY = makeRegistryKey(BreaUtil.byPath("sound"));
+    public static final BreaRegistry<SoundEntry> SOUNDS = new BreaRegistry<>(SOUND_KEY);
 }

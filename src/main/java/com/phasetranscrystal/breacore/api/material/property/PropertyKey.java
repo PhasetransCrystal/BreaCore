@@ -23,6 +23,10 @@ public class PropertyKey<T extends IMaterialProperty> {
      */
     public static final PropertyKey<BlastProperty> BLAST = new PropertyKey<>("blast", BlastProperty.class);
     /**
+     * 聚合物属性
+     */
+    public static final PropertyKey<PolymerProperty> POLYMER = new PropertyKey<>("polymer", PolymerProperty.class);
+    /**
      * 工具属性
      */
     public static final PropertyKey<ToolProperty> TOOL = new PropertyKey<>("tool", ToolProperty.class);
