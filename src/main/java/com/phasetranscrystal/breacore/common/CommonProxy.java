@@ -1,5 +1,6 @@
 package com.phasetranscrystal.breacore.common;
 
+import com.phasetranscrystal.breacore.common.quench.BreaQuench;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 
@@ -27,6 +28,7 @@ public class CommonProxy {
         eventBus.addListener(CommonProxy::onCommonSetup);
         registry();
         BreaHoriz.bootstrap(eventBus);
+        BreaQuench.bootstrap(eventBus);
     }
 
     public static void init() {}

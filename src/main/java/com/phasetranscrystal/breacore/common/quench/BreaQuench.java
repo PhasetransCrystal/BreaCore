@@ -1,32 +1,35 @@
 package com.phasetranscrystal.breacore.common.quench;
 
-import com.phasetranscrystal.breacore.common.horiz.EntityDistributorInit;
-import com.phasetranscrystal.breacore.common.horiz.EventDistributor;
-import com.phasetranscrystal.breacore.common.horiz.EventDistributorTest;
-import com.phasetranscrystal.brealib.utils.BreaUtil;
+import com.phasetranscrystal.breacore.common.quench.perk.EquipPerkComponent;
+import com.phasetranscrystal.breacore.common.quench.perk.ExtraPerkWeightComponent;
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.Registries;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.attachment.AttachmentType;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import static com.phasetranscrystal.breacore.api.registry.registry.BreaRegistrate.Brea;
 
 public class BreaQuench {
 
-    public static final String MODULE_ID = "horiz";
-    public static final String MODULE_NAME = "Horiz";
+    public static final String MODULE_ID = "quench";
+    public static final String MODULE_NAME = "Quench";
 
     public static void bootstrap(IEventBus bus) {
-        EntityDistributorInit.bootstrapConsumer();
-        if (BreaUtil.isProd()) {
-            EventDistributorTest.bootstrapConsumer(bus);
-        }
     }
 
-    public static final RegistryEntry<AttachmentType<?>, AttachmentType<EventDistributor>> EVENT_DISTRIBUTOR;
+    public static final RegistryEntry<DataComponentType<?>, DataComponentType<EquipAssemblyComponent>> EQUIP_ASSEMBLY_COMPONENT;
+    public static final RegistryEntry<DataComponentType<?>, DataComponentType<EquipPerkComponent>> EQUIP_PERK_COMPONENT;
+    public static final RegistryEntry<DataComponentType<?>, DataComponentType<ExtraPerkWeightComponent>> EXTRA_PERK_WEIGHT_COMPONENT;
+
     static {
-        EVENT_DISTRIBUTOR = Brea.simple("horiz/event_distributor",
-                NeoForgeRegistries.Keys.ATTACHMENT_TYPES,
-                () -> AttachmentType.builder(holder -> new EventDistributor()).serialize(EventDistributor.CODEC).build());
+        EQUIP_ASSEMBLY_COMPONENT = Brea.simple("quench/equip_assembly",
+                Registries.DATA_COMPONENT_TYPE,
+                () -> DataComponentType.<EquipAssemblyComponent>builder().persistent(null).build());//TODO
+        EQUIP_PERK_COMPONENT = Brea.simple("quench/equip_perk",
+                Registries.DATA_COMPONENT_TYPE,
+                () -> DataComponentType.<EquipPerkComponent>builder().persistent(EquipPerkComponent.CODEC).build());
+        EXTRA_PERK_WEIGHT_COMPONENT = Brea.simple("quench/extra_perk_weight",
+                Registries.DATA_COMPONENT_TYPE,
+                () -> DataComponentType.<ExtraPerkWeightComponent>builder().persistent(ExtraPerkWeightComponent.CODEC).build());
     }
 }

@@ -1,10 +1,11 @@
-package com.phasetranscrystal.breacore.common.quench;
+package com.phasetranscrystal.breacore.common.quench.stuct;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import com.phasetranscrystal.breacore.api.attribute.IAttributeModifierProvider;
 import com.phasetranscrystal.breacore.api.attribute.TriNum;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
+import com.phasetranscrystal.breacore.common.quench.EquipAssemblyComponent;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -22,20 +23,11 @@ import java.util.Map;
 import java.util.function.BiFunction;
 
 public abstract class EquipType {
-    public ResourceLocation getId() {
-        return BreaRegistries.EQUIP_TYPE.getKey(this);
-    }
-
-    @Override
-    public String toString() {
-        return "EquipType(" + getId() + ")";
-    }
-
     public abstract Map<ResourceLocation, EquipAssemblySlot<?>> getSlots();
 
     public EquipmentSlot availableSlot;
 
-    public boolean readyForAssembly(Map<ResourceLocation, Pair<PartRemould, ItemStack>> parts) {
+    public boolean readyForAssembly(Map<ResourceLocation, Pair<PartRemouldType, ItemStack>> parts) {
         for (Map.Entry<ResourceLocation, EquipAssemblySlot<?>> entry : this.getSlots().entrySet()) {
             if (!entry.getValue().inMust()) continue;
 
@@ -45,6 +37,12 @@ public abstract class EquipType {
         return true;
     }
 
+    public boolean doAssemblyIfReady(ItemStack target, Map<ResourceLocation, Pair<PartRemouldType, ItemStack>> parts) {
+        //TODO 这里需要：检查所有必要格位是否填满 检查工艺改进所需资源 装配AssemblyResult并更新词条状态(移除已启用但已消除的词条)
+        if(!readyForAssembly(parts)) return false;
+
+        return true;
+    }
 
     /**
      * 为锻造的装备生成attribute列表。
@@ -74,12 +72,17 @@ public abstract class EquipType {
         return ImmutableList.copyOf(entries);
     }
 
-    public boolean doAssemblyIfReady(ItemStack target, Map<ResourceLocation, Pair<PartRemould, ItemStack>> parts) {
-        //TODO 这里需要：检查所有必要格位是否填满 检查工艺改进所需资源 装配AssemblyResult并更新词条状态(移除已启用但已消除的词条)
-        if(!readyForAssembly(parts)) return false;
 
-        return true;
+    public ResourceLocation getId() {
+        return BreaRegistries.EQUIP_TYPE.getKey(this);
     }
+
+    @Override
+    public String toString() {
+        return "EquipType(" + getId() + ")";
+    }
+
+
 
     public record EquipAssemblySlot<T extends PartType>(T partType, boolean inMust,
                                                         BiFunction<Holder<Attribute>, TriNum, TriNum> valueMapper) {
@@ -88,7 +91,7 @@ public abstract class EquipType {
     public record AssemblyResult(EquipType type, Map<ResourceLocation, PartAndRemould> parts) {
     }
 
-    public record PartAndRemould(Material material, @Nullable PartRemould remould) {
+    public record PartAndRemould(Material material, @Nullable PartRemouldType remould) {
     }
 
     //TODO

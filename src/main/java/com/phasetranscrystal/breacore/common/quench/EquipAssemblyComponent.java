@@ -1,6 +1,7 @@
 package com.phasetranscrystal.breacore.common.quench;
 
 import com.phasetranscrystal.breacore.api.attribute.IAttributeModifierProvider;
+import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 
@@ -22,8 +23,6 @@ public record EquipAssemblyComponent(EquipType type,
         this(type, slots, type.createEntries(slots, itemStack));
     }
 
-
-    //TODO
     @Override
     public List<ItemAttributeModifiers.Entry> getEntries() {
         return entries;
