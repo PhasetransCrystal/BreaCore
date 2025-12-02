@@ -40,7 +40,7 @@ public record TriNum(double v1, double v2, double v3) {
             map.put(attribute, new AttributeModifier(id.withSuffix("/stage2"), v2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         }
         if(this.v3 != 1){
-            map.put(attribute, new AttributeModifier(id.withSuffix("/stage3"), v3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            map.put(attribute, new AttributeModifier(id.withSuffix("/stage3"), v3 - 1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         }
     }
 
@@ -49,10 +49,10 @@ public record TriNum(double v1, double v2, double v3) {
             list.add(new ItemAttributeModifiers.Entry(attribute, new AttributeModifier(id.withSuffix("/stage1"),v1, AttributeModifier.Operation.ADD_VALUE), group));
         }
         if(this.v2 != 0){
-            list.add(new ItemAttributeModifiers.Entry(attribute, new AttributeModifier(id.withSuffix("/stage2"),v1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), group));
+            list.add(new ItemAttributeModifiers.Entry(attribute, new AttributeModifier(id.withSuffix("/stage2"),v2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), group));
         }
         if(this.v3 != 1){
-            list.add(new ItemAttributeModifiers.Entry(attribute, new AttributeModifier(id.withSuffix("/stage3"),v1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), group));
+            list.add(new ItemAttributeModifiers.Entry(attribute, new AttributeModifier(id.withSuffix("/stage3"),v3 - 1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), group));
         }
     }
 

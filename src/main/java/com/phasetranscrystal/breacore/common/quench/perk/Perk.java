@@ -39,7 +39,7 @@ public abstract class Perk {
      *
      * @see com.phasetranscrystal.breacore.common.horiz.EventDistributor 实体事件调度器
      */
-    public abstract Map<Class<Event>, BiConsumer<Event, Double>> getEventConsumers();
+    public abstract Map<Class<? extends Event>, BiConsumer<Event, Double>> getEventConsumers();
 
     /**
      * 词条比重<p>

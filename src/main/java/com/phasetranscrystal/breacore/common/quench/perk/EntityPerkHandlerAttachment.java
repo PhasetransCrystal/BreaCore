@@ -19,6 +19,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import org.joml.Math;
 
 import java.util.HashMap;
@@ -46,7 +47,11 @@ public class EntityPerkHandlerAttachment {
         if (Objects.equals(perksBySlot.get(slot), component)) return;
 
         this.isDirty = true;
-        perksBySlot.put(slot, component);
+        if (component != null) {
+            perksBySlot.put(slot, component);
+        } else {
+            perksBySlot.remove(slot);
+        }
     }
 
     public void tick(LivingEntity living) {
@@ -69,7 +74,7 @@ public class EntityPerkHandlerAttachment {
         EventDistributor distributor = living.getData(BreaHoriz.EVENT_DISTRIBUTOR.get());
         removed.forEach(perk -> distributor.removeInPath(EVENT_ROOT, perk.getId()));
         added.forEach(perk -> perk.getEventConsumers().forEach((event, consumer) -> {
-            distributor.add(event, e -> consumer.accept(e, perksAndStrength.get(perk)));
+            distributor.add(event, e -> consumer.accept(e, perksAndStrength.get(perk)), EVENT_ROOT, perk.getId());
         }));
 
         perksAndStrength = npas;
@@ -95,9 +100,9 @@ public class EntityPerkHandlerAttachment {
                     if (num.v1() != 0)
                         instance.addOrUpdateTransientModifier(new AttributeModifier(MODIFIER_S1, num.v1(), AttributeModifier.Operation.ADD_VALUE));
                     if (num.v2() != 0)
-                        instance.addOrUpdateTransientModifier(new AttributeModifier(MODIFIER_S1, num.v2(), AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                        instance.addOrUpdateTransientModifier(new AttributeModifier(MODIFIER_S2, num.v2(), AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
                     if (num.v3() != 1)
-                        instance.addOrUpdateTransientModifier(new AttributeModifier(MODIFIER_S1, num.v3(), AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+                        instance.addOrUpdateTransientModifier(new AttributeModifier(MODIFIER_S3, num.v3() - 1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
                 } else if (!na.containsKey(holder) && attributes.containsKey(holder)) {//消去属性
                     instance.removeModifier(MODIFIER_S1);
                     instance.removeModifier(MODIFIER_S2);
@@ -111,8 +116,13 @@ public class EntityPerkHandlerAttachment {
 
     @SubscribeEvent
     public static void entityEquip(LivingEquipmentChangeEvent event) {
-        EquipPerkComponent perkComponent = event.getTo().get(BreaQuench.EQUIP_PERK_COMPONENT);
-        if (perkComponent == null) return;
-        event.getEntity().getData(ENTITY_PERK_HANDLER_ATTACHMENT).update(event.getSlot(), perkComponent);
+        event.getEntity().getData(ENTITY_PERK_HANDLER_ATTACHMENT).update(event.getSlot(), event.getTo().get(BreaQuench.EQUIP_PERK_COMPONENT));
+    }
+
+    @SubscribeEvent
+    public static void entityTick(EntityTickEvent.Post event) {
+        if (event.getEntity() instanceof LivingEntity living) {
+            event.getEntity().getExistingData(ENTITY_PERK_HANDLER_ATTACHMENT).ifPresent(handler -> handler.tick(living));
+        }
     }
 }

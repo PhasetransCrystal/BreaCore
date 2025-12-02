@@ -3,6 +3,7 @@ package com.phasetranscrystal.breacore.common.quench;
 import com.phasetranscrystal.breacore.common.quench.perk.EntityPerkHandlerAttachment;
 import com.phasetranscrystal.breacore.common.quench.perk.EquipPerkComponent;
 import com.phasetranscrystal.breacore.common.quench.perk.ExtraPerkWeightComponent;
+import com.phasetranscrystal.brealib.utils.BreaUtil;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
@@ -18,6 +19,9 @@ public class BreaQuench {
     public static final String MODULE_NAME = "Quench";
 
     public static void bootstrap(IEventBus bus) {
+        if (BreaUtil.isDev()) {
+            BreaQuenchTest.bootstrapConsumer(bus);
+        }
     }
 
     public static final RegistryEntry<DataComponentType<?>, DataComponentType<EquipAssemblyComponent>> EQUIP_ASSEMBLY_COMPONENT;
@@ -29,7 +33,7 @@ public class BreaQuench {
     static {
         EQUIP_ASSEMBLY_COMPONENT = Brea.simple("quench/equip_assembly",
                 Registries.DATA_COMPONENT_TYPE,
-                () -> DataComponentType.<EquipAssemblyComponent>builder().persistent(null).build());//TODO
+                () -> DataComponentType.<EquipAssemblyComponent>builder().persistent(EquipAssemblyComponent.CODEC).build());
         EQUIP_PERK_COMPONENT = Brea.simple("quench/equip_perk",
                 Registries.DATA_COMPONENT_TYPE,
                 () -> DataComponentType.<EquipPerkComponent>builder().persistent(EquipPerkComponent.CODEC).build());

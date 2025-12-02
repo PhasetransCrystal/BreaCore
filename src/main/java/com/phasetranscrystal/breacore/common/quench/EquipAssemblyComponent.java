@@ -1,5 +1,7 @@
 package com.phasetranscrystal.breacore.common.quench;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.phasetranscrystal.breacore.api.attribute.IAttributeModifierProvider;
 import com.phasetranscrystal.breacore.common.quench.perk.IPerkElemProvider;
 import com.phasetranscrystal.breacore.common.quench.perk.Perk;
@@ -19,6 +21,8 @@ import java.util.Map;
 public record EquipAssemblyComponent(EquipType type,
                                      EquipType.AssemblyResult slots,
                                      List<ItemAttributeModifiers.Entry> entries) implements IAttributeModifierProvider, IPerkElemProvider {
+
+    public static final Codec<EquipAssemblyComponent> CODEC = Codec.unit(new EquipAssemblyComponent(null, null, List.of()));//TODO
 
     public EquipAssemblyComponent(EquipType type,
                                   EquipType.AssemblyResult slots,

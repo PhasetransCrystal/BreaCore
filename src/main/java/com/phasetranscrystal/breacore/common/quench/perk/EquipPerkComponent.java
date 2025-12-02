@@ -176,17 +176,8 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
                 .sum();
         // 如果总权重超过上限，禁用所有非强制启用的词条
         if (usedWeight > sumWeight) {
-            Set<Perk> toRemove = new HashSet<>();
-
             // 找出所有非强制启用的词条
-            for (Perk perk : enabledPerks) {
-                if (!perk.forceEnable()) {
-                    toRemove.add(perk);
-                }
-            }
-
-            // 移除非强制启用的词条
-            enabledPerks.removeAll(toRemove);
+            enabledPerks.removeIf(perk -> !perk.forceEnable());
         }
 
         // 5. 创建新的组件实例并设置到stack中
