@@ -8,6 +8,8 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import static com.phasetranscrystal.breacore.common.registry.BreaRegistration.REGISTRATE;
 
 public class BreaHoriz {
+    public static final String MODULE_ID = "horiz";
+    public static final String MODULE_NAME = "Horiz";
 
     public static void bootstrap() {
         EntityDistributorInit.bootstrapConsumer();

@@ -9,6 +9,7 @@ import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
+import com.phasetranscrystal.breacore.common.quench.BreaQuench;
 
 import com.google.common.collect.Multimaps;
 import com.phasetranscrystal.breacore.BreaCore;
@@ -59,6 +60,7 @@ public class CommonProxy {
     public static void init() {
         ConfigHolder.init();
         BreaHoriz.bootstrap();
+        BreaQuench.bootstrap();
 
         BreaElements.init();
         BreaMaterialIconSet.init();
