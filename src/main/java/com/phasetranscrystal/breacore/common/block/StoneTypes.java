@@ -8,7 +8,7 @@ import net.minecraft.world.level.material.MapColor;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
-import com.phasetranscrystal.breacore.data.tag.BreaTagPrefixes;
+import com.phasetranscrystal.breacore.data.tagprefix.BreaTagPrefixes;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 

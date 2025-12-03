@@ -23,7 +23,7 @@ import java.util.List;
 
 import static com.phasetranscrystal.breacore.api.material.info.MaterialFlags.*;
 import static com.phasetranscrystal.breacore.api.tag.TagPrefix.ORES;
-import static com.phasetranscrystal.breacore.data.tag.BreaTagPrefixes.*;
+import static com.phasetranscrystal.breacore.data.tagprefix.BreaTagPrefixes.*;
 
 public class BreaMaterials {
 
@@ -392,6 +392,7 @@ public class BreaMaterials {
     // TODO:原版材料
     public static Material Water;
     public static Material Lava;
+    public static Material Milk;
     /// 黑曜石
     public static Material Obsidian;
     /// 冰

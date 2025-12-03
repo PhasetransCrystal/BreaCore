@@ -34,7 +34,7 @@ import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconSet;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconTypes;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterials;
 import com.phasetranscrystal.breacore.data.misc.BreaCreativeModeTabs;
-import com.phasetranscrystal.breacore.data.tag.BreaTagPrefixes;
+import com.phasetranscrystal.breacore.data.tagprefix.BreaTagPrefixes;
 import com.phasetranscrystal.breacore.mixin.registrate.AbstractRegistrateAccessor;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateLangProvider;

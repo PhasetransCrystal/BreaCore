@@ -17,7 +17,7 @@ public class TagType {
     private final String tagPath;
     @Getter
     private boolean isParentTag = false;
-    // this is now memoized because creating tag keys interns them and that's slow
+    // this is now memoized because creating tagprefix keys interns them and that's slow
     private BiFunction<TagPrefix, Material, TagKey<Item>> formatter;
     private Predicate<Material> filter;
 

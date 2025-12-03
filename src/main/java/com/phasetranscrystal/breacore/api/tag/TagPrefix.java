@@ -350,7 +350,7 @@ public class TagPrefix {
         }
         if (material.hasProperty(PropertyKey.POLYMER)) {
             String localizationKey = String.format("tagprefix.polymer.%s", formattedPrefix);
-            // Not every polymer tag prefix gets a special name
+            // Not every polymer tagprefix prefix gets a special name
             if (LocalizationUtils.exist(localizationKey)) {
                 return localizationKey;
             }

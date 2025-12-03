@@ -38,7 +38,7 @@ public class ItemMaterialData {
     /** Mapping of an item to a "prefix, material" pair */
     public static final List<Pair<Supplier<? extends ItemLike>, MaterialEntry>> ITEM_MATERIAL_ENTRY = new ArrayList<>();
     public static final Map<ItemLike, MaterialEntry> ITEM_MATERIAL_ENTRY_COLLECTED = new Object2ObjectOpenHashMap<>();
-    /** Mapping of a tag to a "prefix, material" pair */
+    /** Mapping of a tagprefix to a "prefix, material" pair */
     public static final Map<TagKey<Item>, MaterialEntry> TAG_MATERIAL_ENTRY = new Object2ObjectLinkedOpenHashMap<>();
     /** Mapping of a fluid to a material */
     public static final Map<Fluid, Material> FLUID_MATERIAL = new Object2ObjectOpenHashMap<>();

@@ -1,4 +1,4 @@
-package com.phasetranscrystal.breacore.data.tag;
+package com.phasetranscrystal.breacore.data.tagprefix;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;

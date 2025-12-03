@@ -25,6 +25,10 @@ public class UnknownCompositionMaterials {
         Lava = new MaterialBuilder(BreaUtil.byPath("lava"))
                 .color(0xFF4000).buildAndRegister();
 
+        Milk = new MaterialBuilder(BreaUtil.byPath("milk"))
+                .color(0xfffbf0).secondaryColor(0xf6eac8).iconSet(FINE)
+                .buildAndRegister();
+
         Netherite = new MaterialBuilder(BreaUtil.byPath("netherite"))
                 .ingot().color(0x4b4042).secondaryColor(0x474447)
                 .buildAndRegister();
