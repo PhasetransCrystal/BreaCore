@@ -18,82 +18,82 @@ import java.util.function.ToIntFunction;
 @Mixin(BlockBehaviour.Properties.class)
 public interface BlockPropertiesAccessor {
 
-    @Accessor
+    @Accessor(remap = false)
     float getDestroyTime();
 
-    @Accessor
+    @Accessor(remap = false)
     float getExplosionResistance();
 
-    @Accessor
+    @Accessor(remap = false)
     boolean isHasCollision();
 
-    @Accessor
+    @Accessor(remap = false)
     boolean isIsRandomlyTicking();
 
-    @Accessor
+    @Accessor(remap = false)
     ToIntFunction<BlockState> getLightEmission();
 
-    @Accessor
+    @Accessor(remap = false)
     Function<BlockState, MapColor> getMapColor();
 
-    @Accessor
+    @Accessor(remap = false)
     SoundType getSoundType();
 
-    @Accessor
+    @Accessor(remap = false)
     float getFriction();
 
-    @Accessor
+    @Accessor(remap = false)
     float getSpeedFactor();
 
-    @Accessor
+    @Accessor(remap = false)
     boolean isDynamicShape();
 
-    @Accessor
+    @Accessor(remap = false)
     boolean isCanOcclude();
 
-    @Accessor
+    @Accessor(remap = false)
     boolean isIsAir();
 
-    @Accessor
+    @Accessor(remap = false)
     boolean isIgnitedByLava();
 
-    @Accessor
+    @Accessor(remap = false)
     boolean isLiquid();
 
-    @Accessor
+    @Accessor(remap = false)
     boolean isForceSolidOff();
 
-    @Accessor
+    @Accessor(remap = false)
     boolean isForceSolidOn();
 
-    @Accessor
+    @Accessor(remap = false)
     PushReaction getPushReaction();
 
-    @Accessor
+    @Accessor(remap = false)
     boolean isRequiresCorrectToolForDrops();
 
     @Nullable
-    @Accessor
+    @Accessor(remap = false)
     BlockBehaviour.OffsetFunction getOffsetFunction();
 
-    @Accessor
+    @Accessor(remap = false)
     void setOffsetFunction(@Nullable BlockBehaviour.OffsetFunction function);
 
-    @Accessor
+    @Accessor(remap = false)
     boolean isSpawnTerrainParticles();
 
-    @Accessor
+    @Accessor(remap = false)
     FeatureFlagSet getRequiredFeatures();
 
-    @Accessor
+    @Accessor(remap = false)
     void setRequiredFeatures(FeatureFlagSet set);
 
-    @Accessor
+    @Accessor(remap = false)
     BlockBehaviour.StatePredicate getEmissiveRendering();
 
-    @Accessor
+    @Accessor(remap = false)
     NoteBlockInstrument getInstrument();
 
-    @Accessor
+    @Accessor(remap = false)
     boolean isReplaceable();
 }
