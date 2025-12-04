@@ -288,7 +288,9 @@ public class FluidRegisterBuilder {
                 .source((p) -> new BreaFluid.Source(this.state, this.burnTime, p));
         builder.clientExtension(() -> () -> {
             final int color = isColorEnabled ? this.color : INFER_COLOR;
-
+            if (flowing == null || still == null) {
+                this.determineTextures(material, key);
+            }
             return new BreaFluidTypeExtensions(still, flowing, color);
         });
         if (this.hasFluidBlock) {
@@ -428,7 +430,7 @@ public class FluidRegisterBuilder {
                 .density(this.density)
                 .lightLevel(this.luminosity)
                 .viscosity(this.viscosity);
-        FluidType type = new FluidType(properties) {
+        return new FluidType(properties) {
 
             @Override
             public @NotNull String getDescriptionId() {
@@ -445,6 +447,5 @@ public class FluidRegisterBuilder {
                 return this.getDescription();
             }
         };
-        return type;
     }
 }
