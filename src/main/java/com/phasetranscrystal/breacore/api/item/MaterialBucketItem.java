@@ -16,8 +16,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class MaterialBucketItem extends BucketItem {
 
-    final Material material;
-    final String langKey;
+    public final Material material;
+    public final String langKey;
 
     public MaterialBucketItem(Fluid fluid, Properties properties, Material material, String langKey) {
         super(fluid, properties);
