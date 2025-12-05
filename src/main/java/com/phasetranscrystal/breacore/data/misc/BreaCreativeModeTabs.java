@@ -31,7 +31,7 @@ public class BreaCreativeModeTabs {
         DEBUG_ITEMS = REGISTRATE.defaultCreativeTab("debug_items",
                 builder -> builder.displayItems(new RegistrateDisplayItemsGenerator("debug_items", REGISTRATE))
                         .icon(Items.COMMAND_BLOCK::getDefaultInstance)
-                        .title(REGISTRATE.addLang("itemsGroup", BreaUtil.byPath("debug_items"), "Debug Page"))
+                        .title(REGISTRATE.addLang("itemGroup", BreaUtil.byPath("debug_items"), "Debug Page"))
                         .build())
                 .register();
         MATERIAL_FLUID = REGISTRATE.defaultCreativeTab("material_fluid",

@@ -299,9 +299,9 @@ public class FluidRegisterBuilder {
                         if (still == null) {
                             this.determineTextures(material, key);
                         }
-                        prov.getBuilder()
+                        prov.create(ctx.getEntry(), prov.getBuilder()
                                 .texture(TextureSlot.PARTICLE, this.still)
-                                .build(ctx.getEntry());
+                                .build(ctx.getEntry()));
                     })
                     .register();
         } else builder.noBlock();

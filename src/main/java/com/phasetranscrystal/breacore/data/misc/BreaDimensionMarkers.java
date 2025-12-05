@@ -57,7 +57,7 @@ public class BreaDimensionMarkers {
                 .lang(FormattingUtil.toEnglishName(name))
                 .blockstate(() -> (ctx, prov) -> {
                     var north = prov.modLoc("block/dim_markers/%s/north".formatted(name));
-                    prov.getBuilder()
+                    prov.create(ctx.getEntry(), prov.getBuilder()
                             .texture(TextureSlot.DOWN, prov.modLoc("block/dim_markers/%s/down".formatted(name)))
                             .texture(TextureSlot.UP, prov.modLoc("block/dim_markers/%s/up".formatted(name)))
                             .texture(TextureSlot.NORTH, north)
@@ -65,7 +65,7 @@ public class BreaDimensionMarkers {
                             .texture(TextureSlot.EAST, prov.modLoc("block/dim_markers/%s/east".formatted(name)))
                             .texture(TextureSlot.WEST, prov.modLoc("block/dim_markers/%s/west".formatted(name)))
                             .texture(TextureSlot.PARTICLE, north)
-                            .guiLight(UnbakedModel.GuiLight.FRONT).build(ctx.get());
+                            .guiLight(UnbakedModel.GuiLight.FRONT).build(ctx.get()));
                 })
                 .simpleItem()
                 .register();

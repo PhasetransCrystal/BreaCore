@@ -13,6 +13,8 @@ import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
 import com.phasetranscrystal.breacore.data.tagprefix.BreaTagPrefixes;
 
+import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.world.level.block.Blocks;
 
 import com.google.common.collect.ImmutableTable;
@@ -56,9 +58,18 @@ public class BreaMaterialBlocks {
                 .setData(ProviderType.BLOCKSTATE, NonNullBiConsumer.noop())
                 .setData(ProviderType.LANG, NonNullBiConsumer.noop())
                 .setData(ProviderType.LOOT, NonNullBiConsumer.noop())
+                .blockstate(() -> (ctx, prov) -> {
+                    prov.create(ctx.getEntry(), prov.getBuilder()
+                            .texture(TextureSlot.ALL, ctx.getId())
+                            .parent(ModelTemplates.CUBE_ALL.model.get())
+                            .build(ctx.getEntry()));
+                })
                 // .color(() -> MaterialBlock::tintedColor)
                 .item(MaterialBlockItem::new)
                 .model(NonNullBiConsumer::noop)
+                .model(() -> (ctx, prov) -> {
+                    prov.generateBlockItem(ctx.getEntry(), l -> l);
+                })
                 // .color(() -> MaterialBlockItem::tintColor)
                 .build()
                 .register());
@@ -102,9 +113,18 @@ public class BreaMaterialBlocks {
                     .blockstate(NonNullBiConsumer::noop)
                     .setData(ProviderType.LANG, NonNullBiConsumer.noop())
                     .setData(ProviderType.LOOT, NonNullBiConsumer.noop())
+                    .blockstate(() -> (ctx, prov) -> {
+                        prov.create(ctx.getEntry(), prov.getBuilder()
+                                .texture(TextureSlot.ALL, ctx.getId())
+                                .parent(ModelTemplates.CUBE_ALL.model.get())
+                                .build(ctx.getEntry()));
+                    })
                     // .color(() -> MaterialBlock::tintedColor)
                     .item(MaterialBlockItem::new)
                     .model(NonNullBiConsumer::noop)
+                    .model(() -> (ctx, prov) -> {
+                        prov.generateBlockItem(ctx.getEntry(), l -> l);
+                    })
                     // .color(() -> MaterialBlockItem::tintColor)
                     .build()
                     .register();

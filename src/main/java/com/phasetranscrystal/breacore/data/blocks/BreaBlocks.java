@@ -98,9 +98,9 @@ public class BreaBlocks {
                     // strata.getSerializedName() + "/" + type.id));
                 } else {
                     entry.blockstate(() -> (ctx, prov) -> {
-                        prov.getBuilder()
+                        prov.create(ctx.getEntry(), prov.getBuilder()
                                 .texture(TextureSlot.ALL, prov.modLoc("block/stones/" + strata.getSerializedName() + "/" + type.id))
-                                .build(ctx.getEntry());
+                                .build(ctx.getEntry()));
                     });
                 }
                 if (type == StoneBlockType.STONE) {

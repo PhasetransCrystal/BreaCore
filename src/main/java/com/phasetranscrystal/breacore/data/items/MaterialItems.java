@@ -7,6 +7,7 @@ import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
 import com.phasetranscrystal.breacore.api.registry.registrate.BreaRegistrate;
 import com.phasetranscrystal.breacore.api.tag.TagPrefix;
 
+import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.world.level.ItemLike;
 
 import com.google.common.collect.ImmutableTable;
@@ -63,6 +64,10 @@ public class MaterialItems {
                 .transform(BreaItems.unificationItem(tagPrefix, material))
                 .properties(p -> p.stacksTo(tagPrefix.maxStackSize()))
                 .model(NonNullBiConsumer::noop)
+                .model(() -> (ctx, prov) -> {
+                    prov.generateFlatItem(ctx.getEntry(), ModelTemplates.FLAT_HANDHELD_ITEM);
+                })
+                .defaultModel()
                 .onRegister(BreaItems::cauldronInteraction)
                 .register());
     }

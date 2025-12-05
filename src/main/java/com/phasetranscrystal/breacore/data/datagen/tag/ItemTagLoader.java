@@ -46,37 +46,6 @@ public class ItemTagLoader {
         provider.tag(ItemTags.PLANKS)
                 .add(MaterialItems.MATERIAL_ITEMS.get(plate, TreatedWood).get())
                 .add(MaterialItems.MATERIAL_ITEMS.get(plate, Wood).get());
-
-        provider.tag(CustomTags.BATTERIES)
-                .addTag(CustomTags.ULV_BATTERIES)
-                .addTag(CustomTags.LV_BATTERIES)
-                .addTag(CustomTags.MV_BATTERIES)
-                .addTag(CustomTags.HV_BATTERIES)
-                .addTag(CustomTags.EV_BATTERIES)
-                .addTag(CustomTags.IV_BATTERIES)
-                .addTag(CustomTags.LuV_BATTERIES)
-                .addTag(CustomTags.ZPM_BATTERIES)
-                .addTag(CustomTags.UV_BATTERIES)
-                .addTag(CustomTags.UHV_BATTERIES);
-
-        // Add highTierContent items as optional entries so it doesn't error
-        provider.tag(CustomTags.ELECTRIC_MOTORS);
-
-        provider.tag(CustomTags.ELECTRIC_PUMPS);
-
-        provider.tag(CustomTags.FLUID_REGULATORS);
-
-        provider.tag(CustomTags.CONVEYOR_MODULES);
-
-        provider.tag(CustomTags.ELECTRIC_PISTONS);
-
-        provider.tag(CustomTags.ROBOT_ARMS);
-
-        provider.tag(CustomTags.FIELD_GENERATORS);
-
-        provider.tag(CustomTags.EMITTERS);
-
-        provider.tag(CustomTags.SENSORS);
     }
 
     private static TagAppender<Item, Item> addTag(RegistrateTagsProvider.Intrinsic<Item> provider,
