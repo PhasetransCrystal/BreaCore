@@ -11,3 +11,5 @@ tasks.register("installGitHooks") {
         }
     }
 }
+
+tasks.prepareKotlinBuildScriptModel.finalizedBy(installGitHooks)
