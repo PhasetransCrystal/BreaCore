@@ -21,8 +21,8 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
-src/generated/
-/logs/
+**/src/generated/
+**/logs/
 
 run
 .git/worktree/
