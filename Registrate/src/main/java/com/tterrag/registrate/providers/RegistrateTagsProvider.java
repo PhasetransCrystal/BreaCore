@@ -1,5 +1,7 @@
 package com.tterrag.registrate.providers;
 
+import com.tterrag.registrate.AbstractRegistrate;
+
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.data.PackOutput;
@@ -11,8 +13,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagBuilder;
 import net.minecraft.tags.TagKey;
 import net.neoforged.fml.LogicalSide;
-
-import com.tterrag.registrate.AbstractRegistrate;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;

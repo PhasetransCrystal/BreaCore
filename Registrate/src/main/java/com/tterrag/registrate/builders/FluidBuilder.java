@@ -1,5 +1,15 @@
 package com.tterrag.registrate.builders;
 
+import com.tterrag.registrate.AbstractRegistrate;
+import com.tterrag.registrate.providers.ProviderType;
+import com.tterrag.registrate.providers.RegistrateLangProvider;
+import com.tterrag.registrate.providers.RegistrateTagsProvider;
+import com.tterrag.registrate.util.OneTimeEventReceiver;
+import com.tterrag.registrate.util.RegistrateDistExecutor;
+import com.tterrag.registrate.util.entry.FluidEntry;
+import com.tterrag.registrate.util.entry.RegistryEntry;
+import com.tterrag.registrate.util.nullness.*;
+
 import net.minecraft.Util;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -27,18 +37,6 @@ import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-import com.google.common.annotations.Beta;
-import com.google.common.base.Preconditions;
-import com.tterrag.registrate.AbstractRegistrate;
-import com.tterrag.registrate.providers.ProviderType;
-import com.tterrag.registrate.providers.RegistrateLangProvider;
-import com.tterrag.registrate.providers.RegistrateTagsProvider;
-import com.tterrag.registrate.util.OneTimeEventReceiver;
-import com.tterrag.registrate.util.RegistrateDistExecutor;
-import com.tterrag.registrate.util.entry.FluidEntry;
-import com.tterrag.registrate.util.entry.RegistryEntry;
-import com.tterrag.registrate.util.nullness.*;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -47,6 +45,9 @@ import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 import javax.annotation.Nullable;
+
+import com.google.common.annotations.Beta;
+import com.google.common.base.Preconditions;
 
 public class FluidBuilder<T extends BaseFlowingFluid, P> extends AbstractBuilder<Fluid, T, P, FluidBuilder<T, P>> {
 

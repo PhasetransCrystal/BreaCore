@@ -1,5 +1,8 @@
 package com.tterrag.registrate.providers.generators;
 
+import com.tterrag.registrate.AbstractRegistrate;
+import com.tterrag.registrate.providers.ProviderType;
+
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.MultiVariant;
@@ -40,9 +43,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.fml.util.ObfuscationReflectionHelper;
 import net.neoforged.neoforge.client.model.generators.template.ExtendedModelTemplate;
 import net.neoforged.neoforge.client.model.generators.template.ExtendedModelTemplateBuilder;
-
-import com.tterrag.registrate.AbstractRegistrate;
-import com.tterrag.registrate.providers.ProviderType;
 
 import java.util.HashMap;
 import java.util.Map;

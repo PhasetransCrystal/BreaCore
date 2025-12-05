@@ -1,19 +1,15 @@
 package com.tterrag.registrate.providers;
 
+import com.tterrag.registrate.AbstractRegistrate;
+import com.tterrag.registrate.util.DebugMarkers;
+import com.tterrag.registrate.util.nullness.NonnullType;
+
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.google.common.collect.Lists;
-import com.tterrag.registrate.AbstractRegistrate;
-import com.tterrag.registrate.util.DebugMarkers;
-import com.tterrag.registrate.util.nullness.NonnullType;
-import lombok.extern.log4j.Log4j2;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -24,6 +20,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
+
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.google.common.collect.Lists;
+import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class RegistrateDataProvider implements DataProvider {

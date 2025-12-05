@@ -1,5 +1,9 @@
 package com.tterrag.registrate.providers.generators;
 
+import com.tterrag.registrate.providers.ProviderType;
+import com.tterrag.registrate.util.DataIngredient;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
+
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.EnterBlockTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -25,18 +29,15 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SuspiciousEffectHolder;
 import net.neoforged.neoforge.common.Tags;
 
-import com.google.common.collect.ImmutableMap;
-import com.tterrag.registrate.providers.ProviderType;
-import com.tterrag.registrate.util.DataIngredient;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import lombok.experimental.Delegate;
-
 import java.util.List;
 import java.util.function.Supplier;
 
 import javax.annotation.CheckReturnValue;
 import javax.annotation.Nullable;
 import javax.annotation.processing.Generated;
+
+import com.google.common.collect.ImmutableMap;
+import lombok.experimental.Delegate;
 
 public class RegistrateRecipeProvider extends RecipeProvider implements RecipeOutput {
 

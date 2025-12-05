@@ -1,5 +1,7 @@
 package com.tterrag.registrate.util.entry;
 
+import com.tterrag.registrate.AbstractRegistrate;
+
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -7,8 +9,6 @@ import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;
-
-import com.tterrag.registrate.AbstractRegistrate;
 
 import java.util.Optional;
 

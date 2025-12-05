@@ -1,5 +1,7 @@
 package com.tterrag.registrate.util.entry;
 
+import com.tterrag.registrate.AbstractRegistrate;
+
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -9,8 +11,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuConstructor;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.neoforge.registries.DeferredHolder;
-
-import com.tterrag.registrate.AbstractRegistrate;
 
 import java.util.function.Consumer;
 

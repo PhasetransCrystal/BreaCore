@@ -1,13 +1,13 @@
 package com.tterrag.registrate.util.entry;
 
+import com.tterrag.registrate.AbstractRegistrate;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.registries.DeferredHolder;
-
-import com.tterrag.registrate.AbstractRegistrate;
 
 import java.util.Optional;
 

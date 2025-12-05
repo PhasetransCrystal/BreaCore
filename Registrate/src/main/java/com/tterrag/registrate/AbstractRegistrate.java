@@ -1,5 +1,18 @@
 package com.tterrag.registrate;
 
+import com.tterrag.registrate.builders.*;
+import com.tterrag.registrate.builders.BlockEntityBuilder.BlockEntityFactory;
+import com.tterrag.registrate.builders.MenuBuilder.ForgeMenuFactory;
+import com.tterrag.registrate.builders.MenuBuilder.MenuFactory;
+import com.tterrag.registrate.builders.MenuBuilder.ScreenFactory;
+import com.tterrag.registrate.providers.*;
+import com.tterrag.registrate.util.CreativeModeTabModifier;
+import com.tterrag.registrate.util.DebugMarkers;
+import com.tterrag.registrate.util.OneTimeEventReceiver;
+import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.entry.RegistryEntry;
+import com.tterrag.registrate.util.nullness.*;
+
 import net.minecraft.Util;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.MenuAccess;
@@ -29,31 +42,6 @@ import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.*;
 
-import com.google.common.base.Preconditions;
-import com.google.common.collect.*;
-import com.mojang.serialization.Codec;
-import com.tterrag.registrate.builders.*;
-import com.tterrag.registrate.builders.BlockEntityBuilder.BlockEntityFactory;
-import com.tterrag.registrate.builders.MenuBuilder.ForgeMenuFactory;
-import com.tterrag.registrate.builders.MenuBuilder.MenuFactory;
-import com.tterrag.registrate.builders.MenuBuilder.ScreenFactory;
-import com.tterrag.registrate.providers.*;
-import com.tterrag.registrate.util.CreativeModeTabModifier;
-import com.tterrag.registrate.util.DebugMarkers;
-import com.tterrag.registrate.util.OneTimeEventReceiver;
-import com.tterrag.registrate.util.entry.ItemEntry;
-import com.tterrag.registrate.util.entry.RegistryEntry;
-import com.tterrag.registrate.util.nullness.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.Value;
-import lombok.experimental.Accessors;
-import lombok.extern.log4j.Log4j2;
-import org.apache.commons.lang3.tuple.Pair;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.message.Message;
-
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.function.Consumer;
@@ -63,6 +51,19 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import com.google.common.base.Preconditions;
+import com.google.common.collect.*;
+import com.mojang.serialization.Codec;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.Value;
+import lombok.experimental.Accessors;
+import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.tuple.Pair;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.message.Message;
 
 /**
  * Manages all registrations and data generators for a mod.

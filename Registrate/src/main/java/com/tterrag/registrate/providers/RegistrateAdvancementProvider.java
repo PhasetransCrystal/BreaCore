@@ -1,5 +1,7 @@
 package com.tterrag.registrate.providers;
 
+import com.tterrag.registrate.AbstractRegistrate;
+
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.core.Holder;
@@ -14,13 +16,6 @@ import net.neoforged.fml.LogicalSide;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.WithConditions;
 
-import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.tterrag.registrate.AbstractRegistrate;
-import lombok.Getter;
-import lombok.extern.log4j.Log4j2;
-
 import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.List;
@@ -31,6 +26,12 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 import javax.annotation.Nullable;
+
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class RegistrateAdvancementProvider implements RegistrateProvider, Consumer<AdvancementHolder> {

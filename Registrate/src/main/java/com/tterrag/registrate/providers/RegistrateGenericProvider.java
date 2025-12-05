@@ -1,5 +1,7 @@
 package com.tterrag.registrate.providers;
 
+import com.tterrag.registrate.AbstractRegistrate;
+
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
@@ -7,13 +9,12 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.fml.LogicalSide;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-import com.tterrag.registrate.AbstractRegistrate;
-import org.apache.commons.compress.utils.Lists;
-import org.jetbrains.annotations.ApiStatus;
-
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
+
+import org.apache.commons.compress.utils.Lists;
+import org.jetbrains.annotations.ApiStatus;
 
 public final class RegistrateGenericProvider implements RegistrateProvider {
 

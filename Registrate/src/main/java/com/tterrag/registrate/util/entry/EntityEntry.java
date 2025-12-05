@@ -1,12 +1,12 @@
 package com.tterrag.registrate.util.entry;
 
+import com.tterrag.registrate.AbstractRegistrate;
+
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
-
-import com.tterrag.registrate.AbstractRegistrate;
 
 import javax.annotation.Nullable;
 

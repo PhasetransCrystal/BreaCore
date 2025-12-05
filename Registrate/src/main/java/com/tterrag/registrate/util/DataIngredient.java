@@ -1,5 +1,8 @@
 package com.tterrag.registrate.util;
 
+import com.tterrag.registrate.providers.generators.RegistrateRecipeProvider;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
+
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -11,14 +14,12 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
-import com.google.common.collect.ObjectArrays;
-import com.tterrag.registrate.providers.generators.RegistrateRecipeProvider;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import lombok.Getter;
-
 import java.util.Arrays;
 import java.util.function.Function;
 import java.util.function.Supplier;
+
+import com.google.common.collect.ObjectArrays;
+import lombok.Getter;
 
 /**
  * A helper for data generation when using ingredients as input(s) to recipes.<br>

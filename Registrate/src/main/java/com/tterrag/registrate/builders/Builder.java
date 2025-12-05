@@ -1,16 +1,16 @@
 package com.tterrag.registrate.builders;
 
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
-import net.neoforged.neoforge.registries.datamaps.DataMapType;
-
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.GeneratorType;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.*;
+
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
+import net.neoforged.neoforge.registries.datamaps.DataMapType;
 
 import java.util.function.Function;
 

@@ -1,14 +1,15 @@
 package com.tterrag.registrate.providers;
 
+import com.tterrag.registrate.AbstractRegistrate;
+
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.neoforged.fml.LogicalSide;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 
-import com.tterrag.registrate.AbstractRegistrate;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.concurrent.CompletableFuture;
+
+import org.jetbrains.annotations.Nullable;
 
 public class RegistrateDataMapProvider extends DataMapProvider implements RegistrateProvider {
 

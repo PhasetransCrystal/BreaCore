@@ -1,5 +1,7 @@
 package com.tterrag.registrate.providers.loot;
 
+import com.tterrag.registrate.AbstractRegistrate;
+
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -14,8 +16,6 @@ import net.minecraft.world.level.storage.loot.functions.FunctionUserBuilder;
 import net.minecraft.world.level.storage.loot.predicates.ConditionUserBuilder;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-
-import com.tterrag.registrate.AbstractRegistrate;
 
 import java.util.Set;
 import java.util.function.Consumer;

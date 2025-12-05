@@ -4,9 +4,9 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 
-import lombok.extern.log4j.Log4j2;
-
 import java.util.Optional;
+
+import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class Registrate extends AbstractRegistrate<Registrate> {

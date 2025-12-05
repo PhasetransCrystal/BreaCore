@@ -1,12 +1,12 @@
 package com.tterrag.registrate.providers;
 
+import com.tterrag.registrate.AbstractRegistrate;
+
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.registries.RegistryPatchGenerator;
 import net.neoforged.fml.LogicalSide;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
-
-import com.tterrag.registrate.AbstractRegistrate;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;

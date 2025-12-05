@@ -1,5 +1,7 @@
 package com.tterrag.registrate.providers.loot;
 
+import com.tterrag.registrate.AbstractRegistrate;
+
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -11,8 +13,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-import com.tterrag.registrate.AbstractRegistrate;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;

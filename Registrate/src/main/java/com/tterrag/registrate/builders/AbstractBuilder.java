@@ -1,15 +1,5 @@
 package com.tterrag.registrate.builders;
 
-import net.minecraft.core.Registry;
-import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagEntry;
-import net.minecraft.tags.TagKey;
-import net.neoforged.neoforge.registries.DeferredHolder;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
@@ -20,11 +10,22 @@ import com.tterrag.registrate.util.nullness.NonNullBiFunction;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.tterrag.registrate.util.nullness.NonnullType;
+
+import net.minecraft.core.Registry;
+import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagEntry;
+import net.minecraft.tags.TagKey;
+import net.neoforged.neoforge.registries.DeferredHolder;
+
+import java.util.Arrays;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-
-import java.util.Arrays;
 
 /**
  * Base class which most builders should extend, instead of implementing [@link {@link Builder} directly.

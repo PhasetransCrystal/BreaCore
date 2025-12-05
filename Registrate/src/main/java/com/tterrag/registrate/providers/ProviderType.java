@@ -1,5 +1,11 @@
 package com.tterrag.registrate.providers;
 
+import com.tterrag.registrate.AbstractRegistrate;
+import com.tterrag.registrate.providers.generators.*;
+import com.tterrag.registrate.providers.loot.RegistrateLootTableProvider;
+import com.tterrag.registrate.util.nullness.FieldsAreNonnullByDefault;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
+
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -12,12 +18,6 @@ import net.minecraft.world.level.material.Fluid;
 import net.neoforged.fml.LogicalSide;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.data.loading.DatagenModLoader;
-
-import com.tterrag.registrate.AbstractRegistrate;
-import com.tterrag.registrate.providers.generators.*;
-import com.tterrag.registrate.providers.loot.RegistrateLootTableProvider;
-import com.tterrag.registrate.util.nullness.FieldsAreNonnullByDefault;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;

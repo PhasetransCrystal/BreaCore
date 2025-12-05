@@ -1,16 +1,17 @@
 package com.tterrag.registrate.util.entry;
 
+import com.tterrag.registrate.AbstractRegistrate;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
+
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-import com.tterrag.registrate.AbstractRegistrate;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import lombok.Getter;
-
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
+
+import lombok.Getter;
 
 /**
  * Wraps a {@link net.neoforged.neoforge.registries.DeferredHolder}, providing a cleaner API with null-safe access, and

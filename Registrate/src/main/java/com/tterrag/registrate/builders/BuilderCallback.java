@@ -1,13 +1,13 @@
 package com.tterrag.registrate.builders;
 
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
-import net.neoforged.neoforge.registries.DeferredHolder;
-
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 /**
  * A callback passed to {@link Builder builders} from the owning {@link AbstractRegistrate} which will add a

@@ -1,13 +1,13 @@
 package com.tterrag.registrate.providers.generators;
 
+import com.tterrag.registrate.AbstractRegistrate;
+import com.tterrag.registrate.providers.RegistrateProvider;
+
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.data.PackOutput;
 import net.neoforged.fml.LogicalSide;
-
-import com.tterrag.registrate.AbstractRegistrate;
-import com.tterrag.registrate.providers.RegistrateProvider;
 
 public class RegistrateModelProvider extends ModelProvider implements RegistrateProvider {
 
