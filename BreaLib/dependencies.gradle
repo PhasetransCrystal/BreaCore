@@ -36,4 +36,5 @@ dependencies {
     implementation "dev.toma.configuration:configuration-${project.minecraft_version}:${project.configuration_version}-neoforge"
 
     runtimeOnly "curse.maven:jei-238222:7025033"
+    runtimeOnly "curse.maven:jade-324717:6902747"
 }

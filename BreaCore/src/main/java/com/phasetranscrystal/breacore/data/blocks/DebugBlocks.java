@@ -6,6 +6,7 @@ import com.phasetranscrystal.breacore.data.misc.BreaCreativeModeTabs;
 
 import static com.phasetranscrystal.breacore.common.registry.BreaRegistration.REGISTRATE;
 import static com.phasetranscrystal.breacore.data.blocks.BreaBlocks.*;
+import static com.phasetranscrystal.breacore.data.tags.CustomTags.DEBUG_ITEMS;
 
 public class DebugBlocks {
 
@@ -15,11 +16,15 @@ public class DebugBlocks {
 
     public static void init() {
         MatCheckBlock = REGISTRATE.block("matcheckblock", CheckMatBlock::new)
-                .simpleItem()
+                .item()
+                .tag(DEBUG_ITEMS)
+                .build()
                 .lang("Material Check Block")
                 .register();
         TestMuiBlock = REGISTRATE.block("mui_test_block", MuiTestBlock::new)
-                .simpleItem()
+                .item()
+                .tag(DEBUG_ITEMS)
+                .build()
                 .lang("MUI Test Block")
                 .register();
     }

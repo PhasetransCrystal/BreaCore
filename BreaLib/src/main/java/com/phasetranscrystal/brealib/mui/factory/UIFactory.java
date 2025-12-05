@@ -5,7 +5,6 @@ import com.phasetranscrystal.brealib.mui.modular.ModularUI;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
 import icyllis.modernui.mc.neoforge.MuiForgeApi;
@@ -26,7 +25,7 @@ public abstract class UIFactory<T> {
         FACTORIES.put(factory.uiFactoryId, factory);
     }
 
-    public final boolean openUI(T holder, ServerPlayer player) {
+    public final boolean openUI(T holder, Player player) {
         MuiForgeApi.openScreen(new TestingFragment());
         return true;
     }

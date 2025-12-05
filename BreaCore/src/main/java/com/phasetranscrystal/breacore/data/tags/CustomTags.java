@@ -158,4 +158,6 @@ public class CustomTags {
     public static final TagKey<Fluid> POTION_FLUIDS = TagUtil.createFluidTag("potion");
     public static final TagKey<Fluid> LIQUID_FLUIDS = TagUtil.createFluidTag("liquid");
     public static final TagKey<Fluid> PLASMA_FLUIDS = TagUtil.createFluidTag("plasmatic");
+
+    public static final TagKey<Item> DEBUG_ITEMS = TagUtil.createItemTag("debug_items");
 }

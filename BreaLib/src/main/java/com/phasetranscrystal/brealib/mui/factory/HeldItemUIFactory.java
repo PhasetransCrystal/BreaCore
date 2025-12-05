@@ -6,7 +6,6 @@ import com.phasetranscrystal.brealib.utils.BreaUtil;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -21,7 +20,7 @@ public class HeldItemUIFactory extends UIFactory<HeldItemUIFactory.HeldItemHolde
         super(BreaUtil.byPath("held_item"));
     }
 
-    public final boolean openUI(ServerPlayer player, InteractionHand hand) {
+    public final boolean openUI(Player player, InteractionHand hand) {
         return openUI(new HeldItemHolder(player, hand), player);
     }
 
