@@ -1,6 +1,7 @@
 package com.phasetranscrystal.breacore.data.blocks;
 
 import com.phasetranscrystal.breacore.api.block.debug.CheckMatBlock;
+import com.phasetranscrystal.breacore.api.block.debug.MuiTestBlock;
 import com.phasetranscrystal.breacore.api.material.ItemMaterialData;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.material.stack.MaterialEntry;
@@ -35,6 +36,8 @@ import static com.phasetranscrystal.breacore.common.registry.BreaRegistration.RE
 public class BreaBlocks {
 
     public static BlockEntry<CheckMatBlock> MatCheckBlock;
+
+    public static BlockEntry<MuiTestBlock> TestMuiBlock;
 
     public static void init() {
         DebugBlocks.init();
