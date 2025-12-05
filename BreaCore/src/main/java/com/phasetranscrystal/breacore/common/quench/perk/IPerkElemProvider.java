@@ -8,5 +8,9 @@ public interface IPerkElemProvider {
         return 0;
     }
 
+    default boolean isAddPerkStrength() {
+        return false;
+    }
+
     Map<Perk, Double> getPerkAndStrength();
 }

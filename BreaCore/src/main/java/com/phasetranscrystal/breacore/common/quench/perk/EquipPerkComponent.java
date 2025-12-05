@@ -187,8 +187,9 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
 
         if (component == null && providers.isEmpty()) return;
 
-        // 1. 计算所有perk及对应强度（累加）
-        Map<Perk, Double> allPerksAndStrength = new HashMap<>();
+        // 1. 计算所有perk及对应强度
+        Map<Perk, Double> pasBasic = new HashMap<>();
+        Map<Perk, Double> pasAdd = new HashMap<>();
         int sumWeight = 0;
 
         for (IPerkElemProvider provider : providers) {
@@ -196,7 +197,22 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
             sumWeight += provider.extraPerkWeight();
 
             // 累加词条强度
-            provider.getPerkAndStrength().forEach((perk, strength) -> allPerksAndStrength.merge(perk, strength, (v1, v2) -> Math.clamp(0, perk.getMaxPerkStrength(), v1 + v2)));
+            if (!provider.isAddPerkStrength()) {
+                provider.getPerkAndStrength().forEach((perk, strength) -> pasBasic.merge(perk, strength, Math::max));
+            } else {
+                provider.getPerkAndStrength().forEach((perk, strength) -> pasAdd.merge(perk, strength, Double::sum));
+            }
+        }
+
+        // 处理词条强度相加
+        pasAdd.forEach((perk, value) -> {
+            if (pasBasic.containsKey(perk))
+                pasBasic.merge(perk, value, Double::sum);
+        });
+
+        // 钳制词条强度范围
+        for (Map.Entry<Perk, Double> entry : pasBasic.entrySet()) {
+            entry.setValue(Math.clamp(0, entry.getKey().getMaxPerkStrength(), entry.getValue()));
         }
 
         // 2. 处理启用名单
@@ -206,10 +222,10 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
         }
 
         // 移除已消失的perk
-        enabledPerks.removeIf(perk -> !allPerksAndStrength.containsKey(perk));
+        enabledPerks.removeIf(perk -> !pasBasic.containsKey(perk));
 
         // 添加强制启用的新增perk
-        allPerksAndStrength.keySet().stream().filter(Perk::forceEnable).forEach(enabledPerks::add);
+        pasBasic.keySet().stream().filter(Perk::forceEnable).forEach(enabledPerks::add);
 
         // 3. 检查词条依赖（循环处理直到没有变化）
         checkPerkDependencies(enabledPerks);
@@ -227,7 +243,7 @@ public record EquipPerkComponent(int maxPerkWeight, int usedPerkWeight,
         // 5. 创建新的组件实例并设置到stack中
         EquipPerkComponent newComponent = EquipPerkComponent.create(
                 sumWeight,
-                ImmutableMap.copyOf(allPerksAndStrength),
+                ImmutableMap.copyOf(pasBasic),
                 enabledPerks);
 
         stack.set(BreaQuench.EQUIP_PERK_COMPONENT, newComponent);

@@ -10,6 +10,8 @@ import com.phasetranscrystal.breacore.api.worldgen.DimensionMarker;
 import com.phasetranscrystal.breacore.common.horiz.SavableEventConsumerData;
 import com.phasetranscrystal.breacore.common.quench.perk.Perk;
 import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
+import com.phasetranscrystal.breacore.common.quench.stuct.PartRemouldType;
+import com.phasetranscrystal.breacore.common.quench.stuct.PartType;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
@@ -85,8 +87,12 @@ public class BreaRegistries {
     public static final BreaRegistry<MapCodec<? extends SavableEventConsumerData<?>>> SAVABLE_EVENT_CONSUMER_TYPE = new BreaRegistry<>(SAVABLE_EVENT_CONSUMER_TYPE_KEY);
 
     public static final ResourceKey<Registry<EquipType>> EQUIP_TYPE_KEY = makeRegistryKey(BreaUtil.byPath("quench/equip_type"));
+    public static final ResourceKey<Registry<PartType>> PART_TYPE_KEY = makeRegistryKey(BreaUtil.byPath("quench/part_type"));
+    public static final ResourceKey<Registry<PartRemouldType>> PART_REMOULD_TYPE_KEY = makeRegistryKey(BreaUtil.byPath("quench/part_remould_type"));
     public static final ResourceKey<Registry<Perk>> PERK_KEY = makeRegistryKey(BreaUtil.byPath("quench/perk"));
     public static final BreaRegistry<EquipType> EQUIP_TYPE = new BreaRegistry<>(EQUIP_TYPE_KEY);
+    public static final BreaRegistry<PartType> PART_TYPE = new BreaRegistry<>(PART_TYPE_KEY);
+    public static final BreaRegistry<PartRemouldType> PART_REMOULD_TYPE = new BreaRegistry<>(PART_REMOULD_TYPE_KEY);
     public static final BreaRegistry<Perk> PERK = new BreaRegistry<>(PERK_KEY);
 
     public static final ResourceKey<Registry<Material>> MATERIAL_KEY = makeRegistryKey(BreaUtil.byPath("material"));

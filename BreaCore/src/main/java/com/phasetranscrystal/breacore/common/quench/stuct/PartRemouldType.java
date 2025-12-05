@@ -1,18 +1,32 @@
 package com.phasetranscrystal.breacore.common.quench.stuct;
 
-import com.phasetranscrystal.breacore.api.attribute.TriNum;
-import com.phasetranscrystal.breacore.common.quench.IAttrElemProvider;
+import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
+import com.phasetranscrystal.breacore.common.quench.IValueElemProvider;
 
-import net.minecraft.core.Holder;
-import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.Map;
+import java.util.Set;
 
-// 改进工艺可能可以要求一定数量的资源作为条件
-public class PartRemouldType implements IAttrElemProvider {
+public abstract class PartRemouldType implements IValueElemProvider {
+
+    public abstract PartType getRootPart();
+
+    public Set<ResourceLocation> requiredProcessingMac() {
+        return Set.of();
+    }
+
+    public ResourceLocation getId() {
+        return BreaRegistries.PART_REMOULD_TYPE.getKey(this);
+    }
 
     @Override
-    public Map<Holder<Attribute>, TriNum> getAttributes() {
+    public String toString() {
+        return "PartRemouldType(" + getId() + ")";
+    }
+
+    @Override
+    public Map<ResourceLocation, Double> getValues() {
         return Map.of();
     }
 }

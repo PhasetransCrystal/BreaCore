@@ -7,11 +7,9 @@ import com.phasetranscrystal.breacore.api.attribute.TriNum;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.breacore.common.quench.perk.EquipPerkComponent;
 import com.phasetranscrystal.breacore.common.quench.perk.Perk;
-import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
 
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -31,14 +29,19 @@ public class BreaQuenchTest {
         modBus.addListener(BreaQuenchTest::bindingEvent);
     }
 
-    public static class TestSwordEquipType extends EquipType {
-        // public static final
-
-        @Override
-        public Map<ResourceLocation, EquipAssemblySlot<?>> getSlots() {
-            return Map.of();
-        }
-    }
+    // public static class TestSwordEquipType extends EquipType {
+    // // public static final
+    //
+    // @Override
+    // public Map<ResourceLocation, EquipAssemblySlot> getSlots() {
+    // return Map.of();
+    // }
+    //
+    // @Override
+    // public void insertData(ItemStack stack, Map<ResourceLocation, Double> gathered) {
+    //
+    // }
+    // }
 
     public static class TestPerk extends Perk {
 
