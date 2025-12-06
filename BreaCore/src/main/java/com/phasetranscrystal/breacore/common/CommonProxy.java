@@ -12,11 +12,9 @@ import com.phasetranscrystal.breacore.common.horiz.BreaHoriz;
 import com.phasetranscrystal.breacore.common.quench.BreaQuench;
 import com.phasetranscrystal.breacore.config.ConfigHolder;
 import com.phasetranscrystal.breacore.data.blockentity.BreaBlockEntities;
-import com.phasetranscrystal.breacore.data.blocks.BreaBlocks;
 import com.phasetranscrystal.breacore.data.datagen.BreaRegistrateDatagen;
 import com.phasetranscrystal.breacore.data.datagen.lang.MaterialLangGenerator;
 import com.phasetranscrystal.breacore.data.entity.BreaEntityTypes;
-import com.phasetranscrystal.breacore.data.fluids.BreaFluids;
 import com.phasetranscrystal.breacore.data.items.BreaItems;
 import com.phasetranscrystal.breacore.data.materials.BreaElements;
 import com.phasetranscrystal.breacore.data.materials.BreaMaterialIconSet;
@@ -69,9 +67,9 @@ public class CommonProxy {
         initMaterials();
         BreaTagPrefixes.init();
 
-        BreaFluids.init();
+        // BreaFluids.init();
         BreaCreativeModeTabs.init();
-        BreaBlocks.init();
+        // BreaBlocks.init();
         BreaEntityTypes.init();
         BreaBlockEntities.init();
 
@@ -92,13 +90,6 @@ public class CommonProxy {
 
             ModList.get().getModContainerById(namespace).map(ModContainer::getEventBus).ifPresent(registrate::registerEventListeners);
         });
-    }
-
-    public static void registry() {
-        BreaCreativeModeTabs.init();
-        BreaFluids.init();
-        BreaBlocks.init();
-        BreaItems.init();
     }
 
     private static void initMaterials() {
