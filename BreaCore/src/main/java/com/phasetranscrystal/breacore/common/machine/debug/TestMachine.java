@@ -27,19 +27,21 @@ public class TestMachine extends MetaMachine implements IUIMachine {
     @Override
     public void onLoad() {
         super.onLoad();
-        subscribeServerTick(() -> {
-            tick++;
-            if (tick > 20 * 5) {
-                var pos = getPos();
-                var y1 = new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ());
-                getHolder().level().setBlockAndUpdate(y1, Blocks.SAND.defaultBlockState());
-            }
-            if (tick > 20 * 10) {
-                var pos = getPos();
-                var y1 = new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ());
-                getHolder().level().setBlockAndUpdate(y1, Blocks.AIR.defaultBlockState());
-                tick = 0;
-            }
-        });
+        var a = subscribeServerTick(this::someUpdate);
+    }
+
+    private void someUpdate() {
+        tick++;
+        if (tick > 20 * 5) {
+            var pos = getPos();
+            var y1 = new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ());
+            getHolder().level().setBlockAndUpdate(y1, Blocks.SAND.defaultBlockState());
+        }
+        if (tick > 20 * 10) {
+            var pos = getPos();
+            var y1 = new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ());
+            getHolder().level().setBlockAndUpdate(y1, Blocks.AIR.defaultBlockState());
+            tick = 0;
+        }
     }
 }
