@@ -13,8 +13,11 @@ import icyllis.modernui.graphics.*;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.graphics.drawable.ShapeDrawable;
 import icyllis.modernui.view.Gravity;
+import icyllis.modernui.view.View;
+import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.*;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public abstract class RootAEFView extends RelativeLayout {
 
@@ -45,6 +48,7 @@ public abstract class RootAEFView extends RelativeLayout {
     protected final CloseButton closeButton;
     protected final LinearLayout titleLayout;
     protected final RelativeLayout centerLayout;
+    protected final LinearLayout bottomLayout;
 
     public RootAEFView(Context context, ResourceLocation icon, String title) {
         super(context);
@@ -85,20 +89,10 @@ public abstract class RootAEFView extends RelativeLayout {
         divider.setSize(dp(1), (int) (tbHeight * 0.7F));
         titleLayout.setDividerDrawable(divider);
         addView(titleLayout, titleLayoutParams);
-        {
-            TextView mainTitleView = new TextView(getContext());
-            mainTitleView.setText(I18n.get(titleKey));
-            mainTitleView.setTextColor(COLOR_TITLE_TEXT);
-            mainTitleView.setTextSize(18);
-            mainTitleView.setPadding(0, 0, (int) (tbHeight * 0.1F), (int) (tbHeight * 0.075F));
-            titleLayout.addView(mainTitleView);
-
-            TextView secondTitleView = new TextView(getContext());
-            secondTitleView.setText("TEST TEXT");
-            secondTitleView.setTextColor(COLOR_DIVIDING_LINE);
-            secondTitleView.setTextSize(12);
-            secondTitleView.setPadding((int) (tbHeight * 0.1F), 0, (int) (tbHeight * 0.1F), (int) (tbHeight * 0.075F));
-            titleLayout.addView(secondTitleView);
+        titleLayout.addView(createMainTitleView());
+        View secondaryTitleView = createSecondaryTitleView();
+        if (secondaryTitleView != null) {
+            addView(secondaryTitleView, secondaryTitleView.getLayoutParams());
         }
 
         // 中部布局
@@ -108,9 +102,81 @@ public abstract class RootAEFView extends RelativeLayout {
         LayoutParams centerOuterLayoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         centerOuterLayoutParams.setMargins(0, tbHeight, 0, tbHeight);
         addView(centerLayout, centerOuterLayoutParams);
+
+        // 底部布局
+        bottomLayout = new LinearLayout(getContext()) {
+
+            @Override
+            protected ViewGroup.LayoutParams generateDefaultLayoutParams() {
+                LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                int v = (int) (tbHeight * 0.125F);
+                param.setMargins(v, v, v, v);
+                return param;
+            }
+        };
+        bottomLayout.setOrientation(LinearLayout.HORIZONTAL);
+        bottomLayout.setGravity(Gravity.RIGHT);
+        MuiHelper.setTestingBoarder(bottomLayout);
+        bottomLayout.setWillNotDraw(false);
+        createBottomButtons(bottomLayout);
+        LayoutParams bottomLayoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, tbHeight);
+        bottomLayoutParams.addRule(ALIGN_PARENT_BOTTOM);
+        addView(bottomLayout, bottomLayoutParams);
     }
 
+    /**
+     * 初始化内容，在子组件添加前触发。
+     * <p>
+     * 由于所有子内容添加均在根类构造方法内完成，子类常量可能无法正常初始化。请在此方法中初始化数据。
+     */
     public void init() {}
+
+    /**
+     * 创建主标题组件
+     */
+    public View createMainTitleView() {
+        TextView mainTitleView = new TextView(getContext());
+        mainTitleView.setText(I18n.get(titleKey));
+        mainTitlePreset(mainTitleView, tbHeight);
+        return mainTitleView;
+    }
+
+    /**
+     * 创建副标题组件
+     *
+     * @return 创建的副标题组件。可为空，表示没有副标题。
+     */
+    public @Nullable View createSecondaryTitleView() {
+        // TextView secondTitleView = new TextView(getContext());
+        // secondTitleView.setText("TEST TEXT");
+        // secondaryTitlePreset(secondTitleView,tbHeight);
+        // return secondTitleView;
+        return null;
+    }
+
+    /**
+     * 创建底部按钮组，从右到左排列。
+     * TODO 这一方法可能会在之后变动以规范化按钮组件。
+     */
+    public void createBottomButtons(LinearLayout bottomLayout) {}
+
+    /**
+     * 为文本组件预设为主标题形式
+     */
+    public static void mainTitlePreset(TextView title, int tbHeight) {
+        title.setTextColor(COLOR_TITLE_TEXT);
+        title.setTextSize(18);
+        title.setPadding(0, 0, (int) (tbHeight * 0.1F), (int) (tbHeight * 0.075F));
+    }
+
+    /**
+     * 为文本组件预设为副标题形式
+     */
+    public static void secondaryTitlePreset(TextView title, int tbHeight) {
+        title.setTextColor(COLOR_DIVIDING_LINE);
+        title.setTextSize(12);
+        title.setPadding((int) (tbHeight * 0.1F), 0, (int) (tbHeight * 0.1F), (int) (tbHeight * 0.075F));
+    }
 
     @Override
     @SuppressWarnings("all")
