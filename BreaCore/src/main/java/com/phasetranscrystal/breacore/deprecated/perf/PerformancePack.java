@@ -1,8 +1,8 @@
 package com.phasetranscrystal.breacore.deprecated.perf;
 
 import com.phasetranscrystal.breacore.api.attribute.TriNum;
+import com.phasetranscrystal.breacore.api.horiz.EventDistributor;
 import com.phasetranscrystal.breacore.common.horiz.BreaHoriz;
-import com.phasetranscrystal.breacore.common.horiz.EventDistributor;
 
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;

@@ -1,6 +1,6 @@
-package com.phasetranscrystal.breacore.common.blast.mixin;
+package com.phasetranscrystal.breacore.mixin.neoforge;
 
-import com.phasetranscrystal.breacore.common.blast.player.KeyInput;
+import com.phasetranscrystal.breacore.api.blast.player.KeyInput;
 
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 

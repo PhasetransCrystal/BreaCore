@@ -1,4 +1,4 @@
-package com.phasetranscrystal.breacore.common.blast.player;
+package com.phasetranscrystal.breacore.api.blast.player;
 
 import com.phasetranscrystal.brealib.utils.BreaUtil;
 

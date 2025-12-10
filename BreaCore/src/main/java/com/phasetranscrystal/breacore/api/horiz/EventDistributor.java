@@ -1,4 +1,4 @@
-package com.phasetranscrystal.breacore.common.horiz;
+package com.phasetranscrystal.breacore.api.horiz;
 
 import com.phasetranscrystal.brealib.utils.Tree;
 

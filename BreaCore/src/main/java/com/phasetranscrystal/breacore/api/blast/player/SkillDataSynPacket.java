@@ -1,10 +1,10 @@
-package com.phasetranscrystal.breacore.common.blast.player;
+package com.phasetranscrystal.breacore.api.blast.player;
 
 import com.phasetranscrystal.brealib.utils.BreaUtil;
 
+import com.phasetranscrystal.breacore.api.blast.skill.Skill;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.breacore.common.blast.BreaBlast;
-import com.phasetranscrystal.breacore.common.blast.skill.Skill;
 
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -26,7 +26,7 @@ public record SkillDataSynPacket(Optional<Skill<Player>> skill,
 
     public static final Type<SkillDataSynPacket> TYPE = new Type<>(BreaUtil.byPath("blast/player_skill_syn"));
     public static final StreamCodec<ByteBuf, SkillDataSynPacket> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.optional(ByteBufCodecs.fromCodec(BreaRegistries.SKILL.byNameCodec())), packet -> packet.skill.map(s -> s),
+            ByteBufCodecs.optional(ByteBufCodecs.fromCodec(BreaRegistries.SKILLS.byNameCodec())), packet -> packet.skill.map(s -> s),
             ByteBufCodecs.optional(ByteBufCodecs.STRING_UTF8), SkillDataSynPacket::stage,
             ByteBufCodecs.optional(ByteBufCodecs.VAR_INT), SkillDataSynPacket::energy,
             ByteBufCodecs.optional(ByteBufCodecs.VAR_INT), SkillDataSynPacket::maxStageEnergy,

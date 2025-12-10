@@ -1,9 +1,9 @@
-package com.phasetranscrystal.breacore.common.blast.player;
+package com.phasetranscrystal.breacore.api.blast.player;
 
+import com.phasetranscrystal.breacore.api.blast.skill.Skill;
+import com.phasetranscrystal.breacore.api.blast.skill.SkillData;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.breacore.common.blast.BreaBlast;
-import com.phasetranscrystal.breacore.common.blast.skill.Skill;
-import com.phasetranscrystal.breacore.common.blast.skill.SkillData;
 
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
@@ -25,7 +25,7 @@ public class SkillGroup {
 
     public static final Logger LOGGER = LogManager.getLogger("BreaBlast:Skill/Group");
     public static final MapCodec<SkillGroup> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            BreaRegistries.SKILL.byNameCodec().orElse(null).listOf().fieldOf("allowed").forGetter(i -> (List<Skill<?>>) ((Object) i.unlockedSkills.stream().toList())),
+            BreaRegistries.SKILLS.byNameCodec().orElse(null).listOf().fieldOf("allowed").forGetter(i -> (List<Skill<?>>) ((Object) i.unlockedSkills.stream().toList())),
             SkillData.CODEC.fieldOf("data").orElse(new SkillData<>(Skill.EMPTY)).forGetter(s -> s.currentSkill)).apply(instance, SkillGroup::new));
 
     private final Set<Skill<Player>> unlockedSkills = new HashSet<>();
@@ -50,7 +50,7 @@ public class SkillGroup {
     private int activeTimesCache = 0;
 
     public SkillGroup() {
-        this.currentSkill = new SkillData<>((Skill<Player>) BreaBlast.EMPTY_SKILL.get());
+        this.currentSkill = new SkillData<>((Skill<Player>) BreaBlast.EMPTY_SKILL);
     }
 
     @SuppressWarnings("unchecked")
@@ -80,7 +80,7 @@ public class SkillGroup {
 
     public boolean changeToEmpty() {
         boolean flag = currentSkill.requestDisable();
-        currentSkill = new SkillData<>((Skill<Player>) BreaBlast.EMPTY_SKILL.get());
+        currentSkill = new SkillData<>((Skill<Player>) BreaBlast.EMPTY_SKILL);
         changed = true;
         return flag;
     }

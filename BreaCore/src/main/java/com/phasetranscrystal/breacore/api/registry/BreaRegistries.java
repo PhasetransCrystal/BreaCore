@@ -2,14 +2,14 @@ package com.phasetranscrystal.breacore.api.registry;
 
 import com.phasetranscrystal.brealib.utils.BreaUtil;
 
+import com.phasetranscrystal.breacore.api.blast.skill.Skill;
+import com.phasetranscrystal.breacore.api.horiz.SavableEventConsumerData;
 import com.phasetranscrystal.breacore.api.machine.MachineDefinition;
 import com.phasetranscrystal.breacore.api.material.Element;
 import com.phasetranscrystal.breacore.api.material.Material;
 import com.phasetranscrystal.breacore.api.material.registry.MaterialRegistry;
 import com.phasetranscrystal.breacore.api.sound.SoundEntry;
 import com.phasetranscrystal.breacore.api.worldgen.DimensionMarker;
-import com.phasetranscrystal.breacore.common.blast.skill.Skill;
-import com.phasetranscrystal.breacore.common.horiz.SavableEventConsumerData;
 import com.phasetranscrystal.breacore.common.quench.perk.Perk;
 import com.phasetranscrystal.breacore.common.quench.stuct.EquipType;
 import com.phasetranscrystal.breacore.common.quench.stuct.PartRemouldType;
@@ -113,5 +113,5 @@ public class BreaRegistries {
     public static final BreaRegistry<MachineDefinition> MACHINES = new BreaRegistry<>(MACHINE_KEY);
 
     public static final ResourceKey<Registry<Skill<?>>> SKILL_KEY = makeRegistryKey(BreaUtil.byPath("blast/skill"));
-    public static final BreaRegistry<Skill<?>> SKILL = new BreaRegistry<>(SKILL_KEY);
+    public static final BreaRegistry<Skill<?>> SKILLS = new BreaRegistry<>(SKILL_KEY);
 }

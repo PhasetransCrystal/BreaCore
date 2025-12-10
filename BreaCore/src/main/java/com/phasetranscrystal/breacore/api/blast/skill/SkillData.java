@@ -1,11 +1,11 @@
-package com.phasetranscrystal.breacore.common.blast.skill;
+package com.phasetranscrystal.breacore.api.blast.skill;
 
 import com.phasetranscrystal.brealib.utils.BreaUtil;
 
+import com.phasetranscrystal.breacore.api.horiz.EventDistributor;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.breacore.common.blast.BreaBlast;
 import com.phasetranscrystal.breacore.common.horiz.BreaHoriz;
-import com.phasetranscrystal.breacore.common.horiz.EventDistributor;
 
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -34,7 +34,7 @@ public class SkillData<T extends Entity> {
             Codec.INT.fieldOf("backgroundEnergy").forGetter(s -> s.backgroundEnergy),
             Codec.STRING.fieldOf("behavior").forGetter(SkillData::getBehaviorName),
             Codec.BOOL.fieldOf("enabled").forGetter(SkillData::isEnabled),
-            BreaRegistries.SKILL.byNameCodec().fieldOf("skill").forGetter(i -> i.skill),
+            BreaRegistries.SKILLS.byNameCodec().fieldOf("skill").forGetter(i -> i.skill),
             Codec.INT.fieldOf("activeTimes").forGetter(SkillData::getActiveTimes),
             Codec.unboundedMap(Codec.STRING, Codec.STRING).fieldOf("cacheData").forGetter(SkillData::getCacheData),
             Codec.unboundedMap(Codec.STRING, Codec.STRING).fieldOf("extendData").forGetter(SkillData::getExtendData),

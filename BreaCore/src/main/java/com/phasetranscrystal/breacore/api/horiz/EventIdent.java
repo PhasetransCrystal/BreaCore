@@ -1,4 +1,4 @@
-package com.phasetranscrystal.breacore.common.horiz;
+package com.phasetranscrystal.breacore.api.horiz;
 
 import net.neoforged.bus.api.Event;
 

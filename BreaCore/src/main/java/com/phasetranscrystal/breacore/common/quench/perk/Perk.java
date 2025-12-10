@@ -1,6 +1,7 @@
 package com.phasetranscrystal.breacore.common.quench.perk;
 
 import com.phasetranscrystal.breacore.api.attribute.TriNum;
+import com.phasetranscrystal.breacore.api.horiz.EventDistributor;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 
 import net.minecraft.core.Holder;
@@ -46,7 +47,7 @@ public abstract class Perk {
      * <p>
      * 事件类型 -> 消费器(事件实例，词条强度)
      *
-     * @see com.phasetranscrystal.breacore.common.horiz.EventDistributor 实体事件调度器
+     * @see EventDistributor 实体事件调度器
      */
     public abstract Map<Class<? extends Event>, BiConsumer<Event, Double>> getEventConsumers();
 

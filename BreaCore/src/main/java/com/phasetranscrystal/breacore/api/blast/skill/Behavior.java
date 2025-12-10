@@ -1,6 +1,6 @@
-package com.phasetranscrystal.breacore.common.blast.skill;
+package com.phasetranscrystal.breacore.api.blast.skill;
 
-import com.phasetranscrystal.breacore.common.blast.player.KeyInput;
+import com.phasetranscrystal.breacore.api.blast.player.KeyInput;
 import com.phasetranscrystal.breacore.common.horiz.EntityDistributorInit;
 
 import net.minecraft.world.entity.Entity;

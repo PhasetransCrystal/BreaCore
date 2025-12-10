@@ -1,10 +1,10 @@
-package com.phasetranscrystal.breacore.common.blast.skill;
+package com.phasetranscrystal.breacore.api.blast.skill;
 
 import com.phasetranscrystal.brealib.BreaLib;
 import com.phasetranscrystal.brealib.utils.BreaUtil;
 
+import com.phasetranscrystal.breacore.api.blast.player.KeyInput;
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
-import com.phasetranscrystal.breacore.common.blast.player.KeyInput;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -303,11 +303,11 @@ public class Skill<T extends Entity> {
     }
 
     public ResourceLocation getId() {
-        return BreaRegistries.SKILL.getKey(this);
+        return BreaRegistries.SKILLS.getKey(this);
     }
 
     public ResourceKey<Skill<?>> getResourceKey() {
-        return BreaRegistries.SKILL.getResourceKey(this).get();
+        return BreaRegistries.SKILLS.getResourceKey(this).get();
     }
 
     @Override

@@ -1,7 +1,7 @@
-package com.phasetranscrystal.breacore.common.blast.player;
+package com.phasetranscrystal.breacore.api.blast.player;
 
+import com.phasetranscrystal.breacore.api.blast.skill.SkillData;
 import com.phasetranscrystal.breacore.common.blast.BreaBlast;
-import com.phasetranscrystal.breacore.common.blast.skill.SkillData;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;

@@ -1,4 +1,4 @@
-package com.phasetranscrystal.breacore.common.blast.player;
+package com.phasetranscrystal.breacore.api.blast.player;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
