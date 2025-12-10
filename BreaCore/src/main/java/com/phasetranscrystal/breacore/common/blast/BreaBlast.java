@@ -1,5 +1,7 @@
 package com.phasetranscrystal.breacore.common.blast;
 
+import com.phasetranscrystal.brealib.utils.BreaUtil;
+
 import com.phasetranscrystal.breacore.api.registry.BreaRegistries;
 import com.phasetranscrystal.breacore.common.blast.player.KeyInputPacket;
 import com.phasetranscrystal.breacore.common.blast.player.SkillDataSynPacket;
@@ -31,7 +33,8 @@ import static com.phasetranscrystal.breacore.common.registry.BreaRegistration.RE
 public class BreaBlast {
 
     public static void bootstrap() {
-        BreaBlastTest.bootstrap();
+        if (BreaUtil.isDev())
+            BreaBlastTest.bootstrap();
     }
 
     public static final RegistryEntry<AttachmentType<?>, AttachmentType<SkillGroup>> PLAYER_SKILL_GROUP;
